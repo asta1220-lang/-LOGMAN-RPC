@@ -20,45 +20,29 @@ nav ul a:hover::after{width:100%}
 .nav-btn{background:var(--accent);color:var(--primary);padding:10px 28px;border:none;border-radius:4px;font-weight:700;font-size:0.8rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
 .nav-btn:hover{background:#e0bc5a;transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,168,75,0.4)}
 
-/* HERO */
 #hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,#111 0%,#0a0a0a 70%)}
 #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,168,75,0.05) 0%,transparent 60%)}
 
-/* GLOBE / LOGO ANIMATION */
 .globe-container{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:520px;height:520px;display:flex;align-items:center;justify-content:center;animation:floatY 6s ease-in-out infinite}
 @keyframes floatY{0%,100%{transform:translateY(-50%) translateY(0)}50%{transform:translateY(-50%) translateY(-20px)}}
-
 .logo-halo{position:absolute;width:310px;height:310px;border-radius:50%;background:radial-gradient(circle,rgba(200,168,75,0.18) 0%,transparent 70%);animation:haloBreath 4s ease-in-out infinite;z-index:1}
 @keyframes haloBreath{0%,100%{transform:scale(1);opacity:0.7}50%{transform:scale(1.25);opacity:1}}
-
 .logo-center{position:absolute;z-index:10;width:280px;height:280px;border-radius:50%;object-fit:contain;filter:drop-shadow(0 0 30px rgba(200,168,75,0.7)) drop-shadow(0 0 70px rgba(200,168,75,0.25))}
-
 .ring-static{position:absolute;width:510px;height:510px;border-radius:50%;border:2px solid rgba(200,168,75,0.3);box-shadow:0 0 30px rgba(200,168,75,0.08),inset 0 0 30px rgba(200,168,75,0.04);z-index:2}
-
-/* Logo orbitando - gira en 18s */
 .logo-spin-wrapper{position:absolute;width:510px;height:510px;animation:spinCW 18s linear infinite;z-index:15}
 .logo-on-orbit{position:absolute;top:-44px;left:50%;transform:translateX(-50%);width:88px;height:88px;border-radius:50%;object-fit:contain;border:2px solid var(--accent);box-shadow:0 0 18px rgba(200,168,75,0.9),0 0 40px rgba(200,168,75,0.4);background:#0a0a0a;padding:4px}
-
-/* Anillo inclinado decorativo */
 .ring-mid-orbit{position:absolute;width:430px;height:430px;border-radius:50%;border:1px solid rgba(200,168,75,0.2);z-index:2;transform:rotateX(60deg)}
-
-/* Punto azul girando al revés */
 .logo-spin-wrapper-2{position:absolute;width:430px;height:430px;animation:spinCCW 28s linear infinite;z-index:5;transform:rotateX(60deg)}
 .dot-orbit{position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:#7ab8f5;box-shadow:0 0 18px #7ab8f5,0 0 35px rgba(122,184,245,0.5)}
-
-/* Punto dorado extra girando más rápido */
 .logo-spin-wrapper-3{position:absolute;width:510px;height:510px;animation:spinCCW 10s linear infinite;z-index:5}
 .dot-gold{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent),0 0 28px rgba(200,168,75,0.6)}
-
 @keyframes spinCW{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes spinCCW{from{transform:rotateX(60deg) rotate(0deg)}to{transform:rotateX(60deg) rotate(-360deg)}}
 
-/* PARTICLES */
 .particles{position:absolute;inset:0;pointer-events:none}
 .particle{position:absolute;border-radius:50%;background:var(--accent);animation:particleFloat linear infinite;opacity:0}
 @keyframes particleFloat{0%{transform:translateY(100vh);opacity:0}10%{opacity:0.5}90%{opacity:0.2}100%{transform:translateY(-100px);opacity:0}}
 
-/* HERO CONTENT */
 .hero-content{position:relative;z-index:10;max-width:700px;padding-left:120px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);padding:6px 16px;border-radius:20px;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;animation:fadeInUp 0.8s ease forwards}
 .hero-badge span{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
@@ -79,7 +63,6 @@ h1 .gold{color:var(--accent)}
 .scroll-line::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,rgba(200,168,75,0.8),transparent);animation:lineDown 2s ease infinite}
 @keyframes lineDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* SERVICIOS */
 #servicios{padding:120px 60px;background:var(--light);color:var(--text);position:relative;overflow:hidden}
 #servicios::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--accent),transparent)}
 .section-label{font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:600}
@@ -95,7 +78,6 @@ h1 .gold{color:var(--accent)}
 .service-card h3{font-size:1.15rem;font-weight:700;margin-bottom:12px;color:var(--text)}
 .service-card p{font-size:0.9rem;line-height:1.7;color:#666}
 
-/* STATS */
 #stats{padding:100px 60px;background:var(--primary);position:relative}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
 .stat-item{text-align:center;padding:60px 40px;border-right:1px solid rgba(255,255,255,0.08);transition:background 0.3s}
@@ -104,7 +86,6 @@ h1 .gold{color:var(--accent)}
 .big-num{font-size:4rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:8px}
 .stat-item p{font-size:0.85rem;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase}
 
-/* PROCESO */
 #proceso{padding:120px 60px;background:#0e0e0e}
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
 .process-steps::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:2px;background:linear-gradient(to right,var(--accent),var(--accent2),var(--accent))}
@@ -115,7 +96,6 @@ h1 .gold{color:var(--accent)}
 .step h4{font-size:1rem;font-weight:700;margin-bottom:10px;color:white}
 .step p{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.6}
 
-/* NOSOTROS */
 #nosotros{padding:120px 60px;background:var(--light);color:var(--text);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .about-visual{position:relative;height:500px;perspective:800px}
 .card-3d{position:absolute;background:white;border-radius:16px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.12);transition:transform 0.5s ease;transform-style:preserve-3d}
@@ -136,7 +116,34 @@ h1 .gold{color:var(--accent)}
 .check-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.95rem;color:var(--text)}
 .check-list li::before{content:'✓';color:var(--accent);background:rgba(200,168,75,0.15);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;flex-shrink:0;margin-top:2px}
 
-/* CONTACTO */
+/* PADRONES */
+#padrones{padding:120px 60px;background:#0e0e0e;position:relative;overflow:hidden}
+#padrones::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--accent),transparent)}
+.padrones-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:0}
+.padron-card{background:rgba(255,255,255,0.03);border:1px solid rgba(200,168,75,0.25);border-radius:16px;padding:48px;position:relative;overflow:hidden;transition:all 0.3s}
+.padron-card:hover{background:rgba(200,168,75,0.06);border-color:rgba(200,168,75,0.5)}
+.padron-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent),transparent)}
+.padron-header{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.padron-icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.padron-icon.gold{background:linear-gradient(135deg,#c8a84b,#8a6d28)}
+.padron-icon.blue{background:linear-gradient(135deg,#1a3a6b,#0a1628)}
+.padron-subtitle{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.padron-title{font-size:1.4rem;font-weight:800;color:white}
+.import-item{display:flex;align-items:center;gap:14px;padding:16px 20px;background:rgba(200,168,75,0.08);border-radius:10px;border-left:3px solid var(--accent);margin-bottom:14px}
+.import-item:last-child{margin-bottom:0}
+.import-item-icon{font-size:1.2rem}
+.import-item-title{font-weight:700;color:white;font-size:0.95rem}
+.import-item-desc{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:2px}
+.export-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.export-item{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(26,58,107,0.3);border-radius:10px;border-left:3px solid #4a7fc1;transition:all 0.3s}
+.export-item:hover{background:rgba(26,58,107,0.5);transform:translateX(4px)}
+.export-item.gold-item{background:rgba(200,168,75,0.15);border-left-color:var(--accent)}
+.export-item.gold-item .export-label{color:var(--accent)}
+.export-icon{font-size:1.1rem}
+.export-label{font-size:0.85rem;font-weight:600;color:white;line-height:1.3}
+.padrones-cta{text-align:center;margin-top:50px;padding:40px;background:rgba(200,168,75,0.06);border:1px solid rgba(200,168,75,0.2);border-radius:16px}
+.padrones-cta p{color:rgba(255,255,255,0.7);font-size:1rem;margin-bottom:20px;line-height:1.7}
+
 #contacto{padding:120px 60px;background:#0a0a0a;text-align:center}
 .contact-box{max-width:700px;margin:0 auto;background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,75,0.2);border-radius:20px;padding:70px;position:relative;overflow:hidden}
 .contact-box::before{content:'';position:absolute;inset:0;border-radius:20px;background:radial-gradient(circle at 50% 0%,rgba(200,168,75,0.08),transparent 60%);pointer-events:none}
@@ -149,7 +156,6 @@ h1 .gold{color:var(--accent)}
 .form-input:focus{border-color:var(--accent)}
 textarea.form-input{resize:vertical;min-height:120px}
 
-/* FOOTER */
 footer{background:#060606;padding:60px;border-top:1px solid rgba(200,168,75,0.15)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
 .footer-logo{height:60px;object-fit:contain;margin-bottom:16px;display:block;filter:drop-shadow(0 0 8px rgba(200,168,75,0.3))}
@@ -160,18 +166,19 @@ footer ul a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;t
 footer ul a:hover{color:var(--accent)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;color:rgba(255,255,255,0.3)}
 
-/* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:16px 24px}nav ul,.nav-btn{display:none}
   .hero-content{padding-left:24px;padding-right:24px}
   .globe-container{display:none}
-  #servicios,#stats,#proceso,#contacto,footer{padding:60px 24px}
+  #servicios,#stats,#proceso,#padrones,#contacto,footer{padding:60px 24px}
   .services-grid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .process-steps{grid-template-columns:1fr 1fr}
   .process-steps::before{display:none}
   #nosotros{grid-template-columns:1fr;padding:60px 24px}
   .about-visual{display:none}
+  .padrones-grid{grid-template-columns:1fr}
+  .export-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
   .contact-box{padding:40px 24px}
@@ -185,6 +192,7 @@ footer ul a:hover{color:var(--accent)}
   <ul>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#padrones">Padrones</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -193,7 +201,6 @@ footer ul a:hover{color:var(--accent)}
 
 <section id="hero">
   <div class="particles" id="particles"></div>
-
   <div class="hero-content">
     <div class="hero-badge"><span></span> Agencia Aduanal Certificada</div>
     <h1>Expertos en<br><span class="gold">Logística</span><br>Internacional</h1>
@@ -209,25 +216,17 @@ footer ul a:hover{color:var(--accent)}
     </div>
   </div>
 
-  <!-- ANIMACIÓN LOGO EN ÓRBITA -->
   <div class="globe-container">
-    <!-- Halo pulsante -->
     <div class="logo-halo"></div>
-    <!-- Logo central grande -->
     <img class="logo-center" src="LOGMAN_RPC.png" alt="LOGMAN RPC">
-    <!-- Anillo exterior fijo -->
     <div class="ring-static"></div>
-    <!-- Logo pequeño girando en órbita exterior -->
     <div class="logo-spin-wrapper">
       <img class="logo-on-orbit" src="LOGMAN_RPC.png" alt="">
     </div>
-    <!-- Punto dorado girando rápido -->
     <div class="logo-spin-wrapper-3">
       <div class="dot-gold"></div>
     </div>
-    <!-- Anillo inclinado -->
     <div class="ring-mid-orbit"></div>
-    <!-- Punto azul girando al revés en órbita inclinada -->
     <div class="logo-spin-wrapper-2">
       <div class="dot-orbit"></div>
     </div>
@@ -273,6 +272,101 @@ footer ul a:hover{color:var(--accent)}
   </div>
 </section>
 
+<!-- PADRONES -->
+<section id="padrones">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-label">Trámites Especializados</div>
+    <h2 class="section-title" style="color:white;margin-bottom:16px">Padrones de<br><em style="color:var(--accent);font-style:normal">Importación & Exportación</em></h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:1rem;max-width:600px;line-height:1.8;margin-bottom:60px">Gestionamos tu registro y mantenimiento en los padrones sectoriales ante el SAT para operar sin contratiempos.</p>
+
+    <div class="padrones-grid">
+
+      <!-- IMPORTACIÓN -->
+      <div class="padron-card">
+        <div class="padron-header">
+          <div class="padron-icon gold">🛃</div>
+          <div>
+            <div class="padron-subtitle">Sector Importación</div>
+            <div class="padron-title">Padrones de Importación</div>
+          </div>
+        </div>
+        <div class="import-item">
+          <div class="import-item-icon">📋</div>
+          <div>
+            <div class="import-item-title">Padrón General de Importadores</div>
+            <div class="import-item-desc">Requisito base para toda operación de importación ante el SAT</div>
+          </div>
+        </div>
+        <div class="import-item">
+          <div class="import-item-icon">🧵</div>
+          <div>
+            <div class="import-item-title">Padrón Sectorial — Textil</div>
+            <div class="import-item-desc">Importación de telas, prendas, fibras y productos textiles</div>
+          </div>
+        </div>
+        <div class="import-item">
+          <div class="import-item-icon">⚙️</div>
+          <div>
+            <div class="import-item-title">Padrón Sectorial — Siderúrgico</div>
+            <div class="import-item-desc">Importación de acero, hierro y productos metálicos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPORTACIÓN -->
+      <div class="padron-card">
+        <div class="padron-header">
+          <div class="padron-icon blue">🚢</div>
+          <div>
+            <div class="padron-subtitle">Sector Exportación</div>
+            <div class="padron-title">Padrones de Exportación</div>
+          </div>
+        </div>
+        <div class="export-grid">
+          <div class="export-item">
+            <span class="export-icon">🍶</span>
+            <div class="export-label">Alcohol y<br>desnaturalizado</div>
+          </div>
+          <div class="export-item">
+            <span class="export-icon">🍺</span>
+            <div class="export-label">Cerveza</div>
+          </div>
+          <div class="export-item">
+            <span class="export-icon">🥃</span>
+            <div class="export-label">Tequila</div>
+          </div>
+          <div class="export-item">
+            <span class="export-icon">🍷</span>
+            <div class="export-label">Bebidas fermentadas<br>(vinos)</div>
+          </div>
+          <div class="export-item">
+            <span class="export-icon">🥂</span>
+            <div class="export-label">Bebidas<br>destiladas</div>
+          </div>
+          <div class="export-item">
+            <span class="export-icon">🚬</span>
+            <div class="export-label">Cigarros y<br>tabacos labrados</div>
+          </div>
+          <div class="export-item">
+            <span class="export-icon">⚡</span>
+            <div class="export-label">Bebidas<br>energetizantes</div>
+          </div>
+          <div class="export-item gold-item">
+            <span class="export-icon">🪙</span>
+            <div class="export-label" style="color:var(--accent)">Oro, plata<br>y cobre</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="padrones-cta">
+      <p>¿Necesitas tramitar o renovar tu padrón sectorial? Nuestro equipo especializado te guía en todo el proceso ante el SAT.</p>
+      <a href="#contacto" class="btn-primary">Tramitar mi Padrón →</a>
+    </div>
+  </div>
+</section>
+
 <section id="nosotros">
   <div class="about-visual">
     <div class="card-3d card-main"><h3>Certificación OEA</h3><p>Operador Económico Autorizado — máximo nivel de confianza ante las autoridades aduaneras mexicanas.</p></div>
@@ -314,6 +408,8 @@ footer ul a:hover{color:var(--accent)}
         <option style="background:#0a0a0a">Importación</option>
         <option style="background:#0a0a0a">Exportación</option>
         <option style="background:#0a0a0a">IMMEX</option>
+        <option style="background:#0a0a0a">Padrón de Importación</option>
+        <option style="background:#0a0a0a">Padrón de Exportación</option>
         <option style="background:#0a0a0a">Consultoría</option>
       </select>
       <textarea class="form-input" placeholder="Describe tu mercancía o necesidad..."></textarea>
@@ -328,12 +424,24 @@ footer ul a:hover{color:var(--accent)}
       <img class="footer-logo" src="LOGMAN_RPC.png" alt="LOGMAN RPC">
       <p>Más de 25 años facilitando el comercio exterior de empresas mexicanas e internacionales con profesionalismo y excelencia.</p>
     </div>
-    <div><h5>Servicios</h5><ul><li><a href="#">Importación</a></li><li><a href="#">Exportación</a></li><li><a href="#">IMMEX</a></li><li><a href="#">Logística</a></li><li><a href="#">Consultoría</a></li></ul></div>
-    <div><h5>Empresa</h5><ul><li><a href="#">Nosotros</a></li><li><a href="#">Certificaciones</a></li><li><a href="#">Blog</a></li><li><a href="#">Empleos</a></li></ul></div>
+    <div><h5>Servicios</h5><ul>
+      <li><a href="#">Importación</a></li>
+      <li><a href="#">Exportación</a></li>
+      <li><a href="#">IMMEX</a></li>
+      <li><a href="#">Logística</a></li>
+      <li><a href="#">Consultoría</a></li>
+    </ul></div>
+    <div><h5>Padrones</h5><ul>
+      <li><a href="#padrones">General de Importadores</a></li>
+      <li><a href="#padrones">Sectorial Textil</a></li>
+      <li><a href="#padrones">Sectorial Siderúrgico</a></li>
+      <li><a href="#padrones">Exportación Bebidas</a></li>
+      <li><a href="#padrones">Metales Preciosos</a></li>
+    </ul></div>
     <div><h5>Contacto</h5><ul>
-      <li><a href="#">📍 Privada limon ,colonia valle de las garzas, Manzanillo, Colima</a></li>
-      <li><a href="#">📞 +52 314 16568578</a></li>
-      <li><a href="#">✉️ mprosales@logmanrpc.mx</a></li>
+      <li><a href="#">📍 Manzanillo, Colima</a></li>
+      <li><a href="#">📞 +52 314 165 8578</a></li>
+      <li><a href="#">✉️ info@logmanrpc.mx</a></li>
       <li><a href="#">🕐 24/7 Disponible</a></li>
     </ul></div>
   </div>
@@ -344,7 +452,6 @@ footer ul a:hover{color:var(--accent)}
 </footer>
 
 <script>
-// Partículas de fondo
 const container = document.getElementById('particles');
 for(let i = 0; i < 30; i++){
   const p = document.createElement('div');
@@ -354,7 +461,6 @@ for(let i = 0; i < 30; i++){
   container.appendChild(p);
 }
 
-// Efecto 3D tilt en service cards
 document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
@@ -365,7 +471,6 @@ document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
-// Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -375,14 +480,13 @@ const observer = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.1});
 
-document.querySelectorAll('.service-card,.step,.stat-item').forEach(el => {
+document.querySelectorAll('.service-card,.step,.stat-item,.padron-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(40px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
 
-// Nav scroll opacity
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   nav.style.background = window.scrollY > 60 ? 'rgba(10,10,10,0.97)' : 'rgba(10,10,10,0.85)';
