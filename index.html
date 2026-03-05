@@ -20,14 +20,21 @@ nav ul a:hover::after{width:100%}
 .nav-btn{background:var(--accent);color:var(--primary);padding:10px 28px;border:none;border-radius:4px;font-weight:700;font-size:0.8rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
 .nav-btn:hover{background:#e0bc5a;transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,168,75,0.4)}
 
-/* WHATSAPP FLOTANTE */
-.whatsapp-float{position:fixed;bottom:30px;left:30px;z-index:9999;display:flex;align-items:center;gap:0;cursor:pointer;text-decoration:none}
-.whatsapp-float:hover .wa-label{max-width:200px;opacity:1;padding:10px 16px}
-.wa-btn{width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.5),0 0 0 0 rgba(37,211,102,0.4);animation:waPulse 2.5s infinite;flex-shrink:0;transition:transform 0.3s}
-.whatsapp-float:hover .wa-btn{transform:scale(1.1)}
-@keyframes waPulse{0%{box-shadow:0 4px 20px rgba(37,211,102,0.5),0 0 0 0 rgba(37,211,102,0.4)}70%{box-shadow:0 4px 20px rgba(37,211,102,0.5),0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 4px 20px rgba(37,211,102,0.5),0 0 0 0 rgba(37,211,102,0)}}
-.wa-btn svg{width:32px;height:32px;fill:white}
-.wa-label{max-width:0;opacity:0;overflow:hidden;background:#25D366;color:white;font-size:0.82rem;font-weight:700;border-radius:0 30px 30px 0;white-space:nowrap;transition:all 0.4s ease;padding:10px 0;margin-left:-8px;line-height:1.3}
+/* BOTONES SOCIALES FLOTANTES */
+.social-float{position:fixed;bottom:30px;left:30px;z-index:9999;display:flex;flex-direction:column;gap:14px}
+.social-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s;position:relative}
+.social-btn svg{width:26px;height:26px;fill:white;transition:transform 0.3s}
+.social-btn:hover{transform:scale(1.15)}
+.social-btn:hover svg{transform:scale(1.1)}
+.social-btn .tooltip{position:absolute;left:68px;background:rgba(0,0,0,0.85);color:white;font-size:0.78rem;font-weight:700;padding:6px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:all 0.3s;transform:translateX(-6px)}
+.social-btn:hover .tooltip{opacity:1;transform:translateX(0)}
+.social-btn .tooltip::before{content:'';position:absolute;left:-5px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-right-color:rgba(0,0,0,0.85)}
+
+.btn-wa{background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,0.45);animation:waPulse 2.5s infinite}
+@keyframes waPulse{0%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0.4)}70%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 4px 20px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0)}}
+
+.btn-fb{background:#1877F2;box-shadow:0 4px 20px rgba(24,119,242,0.4)}
+.btn-ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);box-shadow:0 4px 20px rgba(214,36,159,0.4)}
 
 #hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,#111 0%,#0a0a0a 70%)}
 #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,168,75,0.05) 0%,transparent 60%)}
@@ -201,11 +208,18 @@ footer h5{font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:va
 footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 footer ul a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:color 0.3s}
 footer ul a:hover{color:var(--accent)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:16px}
-.footer-social{display:flex;align-items:center;gap:12px}
-.fb-link{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:color 0.3s;padding:8px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:30px}
-.fb-link:hover{color:#1877F2;border-color:#1877F2;background:rgba(24,119,242,0.1)}
-.fb-link svg{width:18px;height:18px;fill:currentColor}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:28px;display:flex;flex-direction:column;gap:20px}
+.footer-bottom-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:0.8rem;color:rgba(255,255,255,0.3)}
+.footer-social-row{display:flex;align-items:center;gap:12px;justify-content:center;padding-top:4px}
+.footer-social-row span{font-size:0.75rem;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-right:8px}
+.fsoc-btn{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;text-decoration:none;font-size:0.82rem;font-weight:700;transition:all 0.3s;border:1px solid transparent}
+.fsoc-btn svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
+.fsoc-wa{background:rgba(37,211,102,0.1);color:#25D366;border-color:rgba(37,211,102,0.3)}
+.fsoc-wa:hover{background:#25D366;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,0.4)}
+.fsoc-fb{background:rgba(24,119,242,0.1);color:#1877F2;border-color:rgba(24,119,242,0.3)}
+.fsoc-fb:hover{background:#1877F2;color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(24,119,242,0.4)}
+.fsoc-ig{background:rgba(214,36,159,0.1);color:#d6249f;border-color:rgba(214,36,159,0.3)}
+.fsoc-ig:hover{background:radial-gradient(circle at 30% 107%,#fdf497,#fd5949,#d6249f,#285AEB);color:white;transform:translateY(-2px);box-shadow:0 8px 20px rgba(214,36,159,0.4)}
 
 @media(max-width:900px){
   nav{padding:16px 24px}nav ul,.nav-btn{display:none}
@@ -223,22 +237,34 @@ footer ul a:hover{color:var(--accent)}
   .footer-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
   .contact-box{padding:40px 24px}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .whatsapp-float{bottom:20px;left:20px}
+  .footer-bottom-top{flex-direction:column;text-align:center}
+  .footer-social-row{flex-wrap:wrap}
+  .social-float{bottom:20px;left:16px;gap:10px}
+  .social-btn{width:48px;height:48px}
+  .social-btn svg{width:22px;height:22px}
 }
 </style>
 </head>
 <body>
 
-<!-- BOTÓN WHATSAPP FLOTANTE -->
-<a class="whatsapp-float" href="https://wa.me/523141658578" target="_blank" rel="noopener">
-  <div class="wa-btn">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-  </div>
-  <div class="wa-label">¡Escríbenos<br>por WhatsApp!</div>
-</a>
+<!-- BOTONES FLOTANTES REDES SOCIALES -->
+<div class="social-float">
+  <!-- WhatsApp -->
+  <a class="social-btn btn-wa" href="https://wa.me/523141658578" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <div class="tooltip">WhatsApp</div>
+  </a>
+  <!-- Facebook -->
+  <a class="social-btn btn-fb" href="https://www.facebook.com/share/1DUezGhgyi/?mibextid=wwXIfr" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <div class="tooltip">Facebook</div>
+  </a>
+  <!-- Instagram -->
+  <a class="social-btn btn-ig" href="https://www.instagram.com/logmanrpc" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    <div class="tooltip">Instagram</div>
+  </a>
+</div>
 
 <nav>
   <img class="logo-nav" src="LOGMAN_RPC.png" alt="LOGMAN RPC">
@@ -273,9 +299,7 @@ footer ul a:hover{color:var(--accent)}
     <div class="logo-halo"></div>
     <img class="logo-center" src="LOGMAN_RPC.png" alt="LOGMAN RPC">
     <div class="ring-static"></div>
-    <div class="logo-spin-wrapper">
-      <img class="logo-on-orbit" src="LOGMAN_RPC.png" alt="">
-    </div>
+    <div class="logo-spin-wrapper"><img class="logo-on-orbit" src="LOGMAN_RPC.png" alt=""></div>
     <div class="logo-spin-wrapper-3"><div class="dot-gold"></div></div>
     <div class="ring-mid-orbit"></div>
     <div class="logo-spin-wrapper-2"><div class="dot-orbit"></div></div>
@@ -408,26 +432,10 @@ footer ul a:hover{color:var(--accent)}
       </div>
     </div>
     <div class="terrestre-grid-bottom">
-      <div class="mini-card">
-        <span class="mini-icon">📄</span>
-        <h4>Previos de Origen</h4>
-        <p>Verificación documental y física de la mercancía en el punto de origen antes del embarque. Detectamos discrepancias antes de que generen problemas en aduana.</p>
-      </div>
-      <div class="mini-card">
-        <span class="mini-icon">🏭</span>
-        <h4>Auditorías de Proveedor</h4>
-        <p>Evaluación integral de proveedores en origen: procesos productivos, cumplimiento normativo, capacidad operativa y estándares de calidad internacional.</p>
-      </div>
-      <div class="mini-card">
-        <span class="mini-icon">🔬</span>
-        <h4>Inspecciones de Calidad</h4>
-        <p>Revisión técnica de producto terminado antes de exportación o en punto de entrada. Garantizamos que tu mercancía cumple especificaciones acordadas.</p>
-      </div>
-      <div class="mini-card">
-        <span class="mini-icon">🛰️</span>
-        <h4>Rastreo Satelital</h4>
-        <p>Monitoreo GPS en tiempo real de tu carga durante todo el trayecto terrestre. Acceso a plataforma digital con alertas automáticas y reporte de ruta.</p>
-      </div>
+      <div class="mini-card"><span class="mini-icon">📄</span><h4>Previos de Origen</h4><p>Verificación documental y física de la mercancía en el punto de origen antes del embarque. Detectamos discrepancias antes de que generen problemas en aduana.</p></div>
+      <div class="mini-card"><span class="mini-icon">🏭</span><h4>Auditorías de Proveedor</h4><p>Evaluación integral de proveedores en origen: procesos productivos, cumplimiento normativo, capacidad operativa y estándares de calidad internacional.</p></div>
+      <div class="mini-card"><span class="mini-icon">🔬</span><h4>Inspecciones de Calidad</h4><p>Revisión técnica de producto terminado antes de exportación o en punto de entrada. Garantizamos que tu mercancía cumple especificaciones acordadas.</p></div>
+      <div class="mini-card"><span class="mini-icon">🛰️</span><h4>Rastreo Satelital</h4><p>Monitoreo GPS en tiempo real de tu carga durante todo el trayecto terrestre. Acceso a plataforma digital con alertas automáticas y reporte de ruta.</p></div>
     </div>
     <div style="text-align:center;margin-top:50px;padding:40px;background:rgba(200,168,75,0.06);border:1px solid rgba(200,168,75,0.15);border-radius:16px">
       <p style="color:#555;font-size:1rem;margin-bottom:20px;line-height:1.7">¿Necesitas cotizar un servicio de transporte o inspección? Te respondemos en menos de 2 horas.</p>
@@ -486,7 +494,7 @@ footer ul a:hover{color:var(--accent)}
       </select>
       <textarea class="form-input" id="f-msg" placeholder="Describe tu mercancía o necesidad..."></textarea>
       <div id="send-status" class="send-status"></div>
-      <button class="btn-primary" id="btn-send" onclick="enviarCorreo()" style="align-self:center;padding:18px 60px;font-size:0.9rem">Enviar Consulta →</button>
+      <button class="btn-primary" onclick="enviarCorreo()" style="align-self:center;padding:18px 60px;font-size:0.9rem">Enviar Consulta →</button>
     </div>
   </div>
 </section>
@@ -518,20 +526,34 @@ footer ul a:hover{color:var(--accent)}
       <li><a href="#">🕐 24/7 Disponible</a></li>
     </ul></div>
   </div>
+
   <div class="footer-bottom">
-    <span>© 2026 LOGMAN RPC. Logística Internacional y Despachos Aduanales.</span>
-    <div class="footer-social">
-      <a class="fb-link" href="https://www.facebook.com/share/1DUezGhgyi/?mibextid=wwXIfr" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        Síguenos en Facebook
+    <div class="footer-bottom-top">
+      <span>© 2026 LOGMAN RPC. Logística Internacional y Despachos Aduanales.</span>
+      <span>Patente Aduanal · Certificación OEA · SAT Verificado</span>
+    </div>
+    <div class="footer-social-row">
+      <span>Síguenos</span>
+      <!-- WhatsApp -->
+      <a class="fsoc-btn fsoc-wa" href="https://wa.me/523141658578" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <!-- Facebook -->
+      <a class="fsoc-btn fsoc-fb" href="https://www.facebook.com/share/1DUezGhgyi/?mibextid=wwXIfr" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <!-- Instagram -->
+      <a class="fsoc-btn fsoc-ig" href="https://www.instagram.com/logmanrpc" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
       </a>
     </div>
-    <span>Patente Aduanal · Certificación OEA · SAT Verificado</span>
   </div>
 </footer>
 
 <script>
-// Partículas
 const container = document.getElementById('particles');
 for(let i = 0; i < 30; i++){
   const p = document.createElement('div');
@@ -541,7 +563,6 @@ for(let i = 0; i < 30; i++){
   container.appendChild(p);
 }
 
-// 3D tilt service cards
 document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
@@ -552,7 +573,6 @@ document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
-// Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -561,6 +581,7 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, {threshold: 0.1});
+
 document.querySelectorAll('.service-card,.step,.stat-item,.padron-card,.terrestre-card,.mini-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(40px)';
@@ -568,13 +589,11 @@ document.querySelectorAll('.service-card,.step,.stat-item,.padron-card,.terrestr
   observer.observe(el);
 });
 
-// Nav scroll
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   nav.style.background = window.scrollY > 60 ? 'rgba(10,10,10,0.97)' : 'rgba(10,10,10,0.85)';
 });
 
-// Enviar correo con mailto
 function enviarCorreo() {
   const nombre  = document.getElementById('f-nombre').value.trim();
   const email   = document.getElementById('f-email').value.trim();
@@ -606,7 +625,6 @@ Enviado desde el sitio web de LOGMAN RPC`
   );
 
   window.location.href = `mailto:mrposales@logmanrpc.mx?subject=${subject}&body=${body}`;
-
   status.className = 'send-status success';
   status.textContent = '✅ Se abrió tu cliente de correo. Revisa el borrador y envíalo.';
 }
