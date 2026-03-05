@@ -12,8 +12,8 @@ html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--primary);color:var(--white);overflow-x:hidden}
 nav{position:fixed;top:0;width:100%;z-index:1000;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,168,75,0.2);transition:all 0.3s}
 .logo-nav{height:48px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(200,168,75,0.5))}
-nav ul{list-style:none;display:flex;gap:40px}
-nav ul a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.3s;position:relative}
+nav ul{list-style:none;display:flex;gap:32px}
+nav ul a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.3s;position:relative}
 nav ul a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s}
 nav ul a:hover{color:var(--accent)}
 nav ul a:hover::after{width:100%}
@@ -96,30 +96,10 @@ h1 .gold{color:var(--accent)}
 .step h4{font-size:1rem;font-weight:700;margin-bottom:10px;color:white}
 .step p{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.6}
 
-#nosotros{padding:120px 60px;background:var(--light);color:var(--text);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about-visual{position:relative;height:500px;perspective:800px}
-.card-3d{position:absolute;background:white;border-radius:16px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.12);transition:transform 0.5s ease;transform-style:preserve-3d}
-.card-3d:hover{transform:rotateY(-10deg) rotateX(5deg) scale(1.03)}
-.card-main{width:320px;top:20px;left:20px;background:#0a0a0a;color:white;animation:float3d 5s ease-in-out infinite}
-@keyframes float3d{0%,100%{transform:translateY(0) rotateY(-5deg) rotateX(3deg)}50%{transform:translateY(-15px) rotateY(5deg) rotateX(-3deg)}}
-.card-main h3{font-size:1.2rem;color:var(--accent);margin-bottom:8px}
-.card-main p{font-size:0.85rem;opacity:0.7}
-.card-secondary{width:240px;bottom:40px;right:0;top:auto;background:var(--accent);color:var(--primary);animation:float3d 5s 1s ease-in-out infinite}
-.card-secondary .big-icon{font-size:2.5rem;margin-bottom:8px}
-.card-secondary h4{font-weight:800;font-size:1rem}
-.card-accent{width:180px;top:240px;left:0;background:var(--accent2);color:white;animation:float3d 5s 2s ease-in-out infinite}
-.card-accent p{font-size:0.75rem;opacity:0.8}
-.card-accent strong{font-size:1.8rem;display:block}
-.about-content .section-title{margin-bottom:24px}
-.about-content>p{font-size:1rem;line-height:1.8;color:#555;margin-bottom:32px}
-.check-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
-.check-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.95rem;color:var(--text)}
-.check-list li::before{content:'✓';color:var(--accent);background:rgba(200,168,75,0.15);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;flex-shrink:0;margin-top:2px}
-
 /* PADRONES */
-#padrones{padding:120px 60px;background:#0e0e0e;position:relative;overflow:hidden}
+#padrones{padding:120px 60px;background:#0a0a0a;position:relative;overflow:hidden}
 #padrones::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--accent),transparent)}
-.padrones-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:0}
+.padrones-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .padron-card{background:rgba(255,255,255,0.03);border:1px solid rgba(200,168,75,0.25);border-radius:16px;padding:48px;position:relative;overflow:hidden;transition:all 0.3s}
 .padron-card:hover{background:rgba(200,168,75,0.06);border-color:rgba(200,168,75,0.5)}
 .padron-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent),transparent)}
@@ -143,6 +123,58 @@ h1 .gold{color:var(--accent)}
 .export-label{font-size:0.85rem;font-weight:600;color:white;line-height:1.3}
 .padrones-cta{text-align:center;margin-top:50px;padding:40px;background:rgba(200,168,75,0.06);border:1px solid rgba(200,168,75,0.2);border-radius:16px}
 .padrones-cta p{color:rgba(255,255,255,0.7);font-size:1rem;margin-bottom:20px;line-height:1.7}
+
+/* LOGÍSTICA TERRESTRE */
+#terrestre{padding:120px 60px;background:var(--light);color:var(--text);position:relative;overflow:hidden}
+#terrestre::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--accent),transparent)}
+.terrestre-intro{max-width:650px;margin-bottom:70px}
+.terrestre-intro p{font-size:1rem;line-height:1.8;color:#555;margin-top:16px}
+.terrestre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px}
+.terrestre-card{background:white;border-radius:16px;padding:36px 32px;border:1px solid rgba(0,0,0,0.07);position:relative;overflow:hidden;transition:all 0.35s;cursor:default}
+.terrestre-card::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(200,168,75,0.06),transparent);opacity:0;transition:opacity 0.35s}
+.terrestre-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,0.13),0 0 0 1px rgba(200,168,75,0.25)}
+.terrestre-card:hover::after{opacity:1}
+.terrestre-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.terrestre-badge{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;background:rgba(200,168,75,0.12);color:var(--accent);padding:4px 10px;border-radius:20px;font-weight:700}
+.terrestre-icon-wrap{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.terrestre-card h3{font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:10px}
+.terrestre-card p{font-size:0.88rem;line-height:1.7;color:#666;margin-bottom:20px}
+.terrestre-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:0.72rem;padding:4px 12px;border-radius:20px;font-weight:600;letter-spacing:0.5px}
+.tag-dark{background:#0a0a0a;color:rgba(255,255,255,0.7)}
+.tag-gold{background:rgba(200,168,75,0.15);color:var(--accent)}
+.tag-blue{background:rgba(26,58,107,0.15);color:var(--accent2)}
+
+/* Fila inferior: previos + auditorías + calidad + rastreo */
+.terrestre-grid-bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mini-card{background:white;border-radius:14px;padding:28px 24px;border:1px solid rgba(0,0,0,0.07);position:relative;overflow:hidden;transition:all 0.3s}
+.mini-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.mini-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.1)}
+.mini-card:hover::before{transform:scaleX(1)}
+.mini-icon{font-size:2rem;margin-bottom:14px;display:block}
+.mini-card h4{font-size:0.95rem;font-weight:800;color:var(--text);margin-bottom:8px}
+.mini-card p{font-size:0.82rem;line-height:1.6;color:#777}
+
+#nosotros{padding:120px 60px;background:#0e0e0e;color:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-visual{position:relative;height:500px;perspective:800px}
+.card-3d{position:absolute;border-radius:16px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.3);transition:transform 0.5s ease;transform-style:preserve-3d}
+.card-3d:hover{transform:rotateY(-10deg) rotateX(5deg) scale(1.03)}
+.card-main{width:320px;top:20px;left:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(200,168,75,0.2);color:white;animation:float3d 5s ease-in-out infinite}
+@keyframes float3d{0%,100%{transform:translateY(0) rotateY(-5deg) rotateX(3deg)}50%{transform:translateY(-15px) rotateY(5deg) rotateX(-3deg)}}
+.card-main h3{font-size:1.2rem;color:var(--accent);margin-bottom:8px}
+.card-main p{font-size:0.85rem;opacity:0.7}
+.card-secondary{width:240px;bottom:40px;right:0;top:auto;background:var(--accent);color:var(--primary);animation:float3d 5s 1s ease-in-out infinite}
+.card-secondary .big-icon{font-size:2.5rem;margin-bottom:8px}
+.card-secondary h4{font-weight:800;font-size:1rem}
+.card-accent{width:180px;top:240px;left:0;background:var(--accent2);color:white;animation:float3d 5s 2s ease-in-out infinite}
+.card-accent p{font-size:0.75rem;opacity:0.8}
+.card-accent strong{font-size:1.8rem;display:block}
+.about-content .section-title{margin-bottom:24px;color:white}
+.about-content .section-title em{color:var(--accent)}
+.about-content>p{font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.6);margin-bottom:32px}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.check-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.95rem;color:rgba(255,255,255,0.85)}
+.check-list li::before{content:'✓';color:var(--accent);background:rgba(200,168,75,0.15);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;flex-shrink:0;margin-top:2px}
 
 #contacto{padding:120px 60px;background:#0a0a0a;text-align:center}
 .contact-box{max-width:700px;margin:0 auto;background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,75,0.2);border-radius:20px;padding:70px;position:relative;overflow:hidden}
@@ -170,14 +202,14 @@ footer ul a:hover{color:var(--accent)}
   nav{padding:16px 24px}nav ul,.nav-btn{display:none}
   .hero-content{padding-left:24px;padding-right:24px}
   .globe-container{display:none}
-  #servicios,#stats,#proceso,#padrones,#contacto,footer{padding:60px 24px}
-  .services-grid{grid-template-columns:1fr}
+  #servicios,#stats,#proceso,#padrones,#terrestre,#contacto,footer{padding:60px 24px}
+  #nosotros{grid-template-columns:1fr;padding:60px 24px}
+  .services-grid,.terrestre-grid,.padrones-grid{grid-template-columns:1fr}
+  .terrestre-grid-bottom{grid-template-columns:1fr 1fr}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .process-steps{grid-template-columns:1fr 1fr}
   .process-steps::before{display:none}
-  #nosotros{grid-template-columns:1fr;padding:60px 24px}
   .about-visual{display:none}
-  .padrones-grid{grid-template-columns:1fr}
   .export-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
@@ -193,6 +225,7 @@ footer ul a:hover{color:var(--accent)}
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#padrones">Padrones</a></li>
+    <li><a href="#terrestre">Logística</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -215,7 +248,6 @@ footer ul a:hover{color:var(--accent)}
       <div><div class="stat-num">+5K</div><div class="stat-lbl">Clientes activos</div></div>
     </div>
   </div>
-
   <div class="globe-container">
     <div class="logo-halo"></div>
     <img class="logo-center" src="LOGMAN_RPC.png" alt="LOGMAN RPC">
@@ -223,15 +255,10 @@ footer ul a:hover{color:var(--accent)}
     <div class="logo-spin-wrapper">
       <img class="logo-on-orbit" src="LOGMAN_RPC.png" alt="">
     </div>
-    <div class="logo-spin-wrapper-3">
-      <div class="dot-gold"></div>
-    </div>
+    <div class="logo-spin-wrapper-3"><div class="dot-gold"></div></div>
     <div class="ring-mid-orbit"></div>
-    <div class="logo-spin-wrapper-2">
-      <div class="dot-orbit"></div>
-    </div>
+    <div class="logo-spin-wrapper-2"><div class="dot-orbit"></div></div>
   </div>
-
   <div class="scroll-line">Scroll</div>
 </section>
 
@@ -240,7 +267,7 @@ footer ul a:hover{color:var(--accent)}
     <div class="section-label">Nuestros Servicios</div>
     <h2 class="section-title">Soluciones integrales para<br><em>tu operación aduanal</em></h2>
     <div class="services-grid">
-      <div class="service-card"><div class="service-icon">🛳️</div><h3>Despacho de Importación</h3><p>Clasificación arancelaria, trámites ante el SAT y liberación de mercancías en todos los puertos de entrada del país con máxima rapidez.</p></div>
+      <div class="service-card"><div class="service-icon">🛳️</div><h3>Despacho de Importación</h3><p>Clasificación arancelaria, trámites ante el SAT y liberación de mercancías en todos los puertos de entrada del país.</p></div>
       <div class="service-card"><div class="service-icon">✈️</div><h3>Exportación Internacional</h3><p>Gestión completa de pedimentos de exportación, certificados de origen, documentación y coordinación logística global.</p></div>
       <div class="service-card"><div class="service-icon">📦</div><h3>Operaciones IMMEX</h3><p>Administración de programas de manufactura, importación temporal y optimización de flujos bajo el esquema IMMEX.</p></div>
       <div class="service-card"><div class="service-icon">⚖️</div><h3>Cumplimiento Normativo</h3><p>Asesoría en NOM, regulaciones sanitarias, permisos previos y defensa aduanera ante auditorías del SAT y Aduanas.</p></div>
@@ -278,10 +305,7 @@ footer ul a:hover{color:var(--accent)}
     <div class="section-label">Trámites Especializados</div>
     <h2 class="section-title" style="color:white;margin-bottom:16px">Padrones de<br><em style="color:var(--accent);font-style:normal">Importación & Exportación</em></h2>
     <p style="color:rgba(255,255,255,0.5);font-size:1rem;max-width:600px;line-height:1.8;margin-bottom:60px">Gestionamos tu registro y mantenimiento en los padrones sectoriales ante el SAT para operar sin contratiempos.</p>
-
     <div class="padrones-grid">
-
-      <!-- IMPORTACIÓN -->
       <div class="padron-card">
         <div class="padron-header">
           <div class="padron-icon gold">🛃</div>
@@ -290,30 +314,10 @@ footer ul a:hover{color:var(--accent)}
             <div class="padron-title">Padrones de Importación</div>
           </div>
         </div>
-        <div class="import-item">
-          <div class="import-item-icon">📋</div>
-          <div>
-            <div class="import-item-title">Padrón General de Importadores</div>
-            <div class="import-item-desc">Requisito base para toda operación de importación ante el SAT</div>
-          </div>
-        </div>
-        <div class="import-item">
-          <div class="import-item-icon">🧵</div>
-          <div>
-            <div class="import-item-title">Padrón Sectorial — Textil</div>
-            <div class="import-item-desc">Importación de telas, prendas, fibras y productos textiles</div>
-          </div>
-        </div>
-        <div class="import-item">
-          <div class="import-item-icon">⚙️</div>
-          <div>
-            <div class="import-item-title">Padrón Sectorial — Siderúrgico</div>
-            <div class="import-item-desc">Importación de acero, hierro y productos metálicos</div>
-          </div>
-        </div>
+        <div class="import-item"><div class="import-item-icon">📋</div><div><div class="import-item-title">Padrón General de Importadores</div><div class="import-item-desc">Requisito base para toda operación de importación ante el SAT</div></div></div>
+        <div class="import-item"><div class="import-item-icon">🧵</div><div><div class="import-item-title">Padrón Sectorial — Textil</div><div class="import-item-desc">Importación de telas, prendas, fibras y productos textiles</div></div></div>
+        <div class="import-item"><div class="import-item-icon">⚙️</div><div><div class="import-item-title">Padrón Sectorial — Siderúrgico</div><div class="import-item-desc">Importación de acero, hierro y productos metálicos</div></div></div>
       </div>
-
-      <!-- EXPORTACIÓN -->
       <div class="padron-card">
         <div class="padron-header">
           <div class="padron-icon blue">🚢</div>
@@ -323,46 +327,112 @@ footer ul a:hover{color:var(--accent)}
           </div>
         </div>
         <div class="export-grid">
-          <div class="export-item">
-            <span class="export-icon">🍶</span>
-            <div class="export-label">Alcohol y<br>desnaturalizado</div>
-          </div>
-          <div class="export-item">
-            <span class="export-icon">🍺</span>
-            <div class="export-label">Cerveza</div>
-          </div>
-          <div class="export-item">
-            <span class="export-icon">🥃</span>
-            <div class="export-label">Tequila</div>
-          </div>
-          <div class="export-item">
-            <span class="export-icon">🍷</span>
-            <div class="export-label">Bebidas fermentadas<br>(vinos)</div>
-          </div>
-          <div class="export-item">
-            <span class="export-icon">🥂</span>
-            <div class="export-label">Bebidas<br>destiladas</div>
-          </div>
-          <div class="export-item">
-            <span class="export-icon">🚬</span>
-            <div class="export-label">Cigarros y<br>tabacos labrados</div>
-          </div>
-          <div class="export-item">
-            <span class="export-icon">⚡</span>
-            <div class="export-label">Bebidas<br>energetizantes</div>
-          </div>
-          <div class="export-item gold-item">
-            <span class="export-icon">🪙</span>
-            <div class="export-label" style="color:var(--accent)">Oro, plata<br>y cobre</div>
-          </div>
+          <div class="export-item"><span class="export-icon">🍶</span><div class="export-label">Alcohol y desnaturalizado</div></div>
+          <div class="export-item"><span class="export-icon">🍺</span><div class="export-label">Cerveza</div></div>
+          <div class="export-item"><span class="export-icon">🥃</span><div class="export-label">Tequila</div></div>
+          <div class="export-item"><span class="export-icon">🍷</span><div class="export-label">Bebidas fermentadas (vinos)</div></div>
+          <div class="export-item"><span class="export-icon">🥂</span><div class="export-label">Bebidas destiladas</div></div>
+          <div class="export-item"><span class="export-icon">🚬</span><div class="export-label">Cigarros y tabacos labrados</div></div>
+          <div class="export-item"><span class="export-icon">⚡</span><div class="export-label">Bebidas energetizantes</div></div>
+          <div class="export-item gold-item"><span class="export-icon">🪙</span><div class="export-label">Oro, plata y cobre</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="padrones-cta">
+      <p>¿Necesitas tramitar o renovar tu padrón sectorial? Nuestro equipo especializado te guía en todo el proceso ante el SAT.</p>
+      <a href="#contacto" class="btn-primary">Tramitar mi Padrón →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOGÍSTICA TERRESTRE & SERVICIOS ADICIONALES -->
+<section id="terrestre">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="terrestre-intro">
+      <div class="section-label">Logística & Calidad</div>
+      <h2 class="section-title">Transporte, inspección<br><em>y control de calidad</em></h2>
+      <p>Ofrecemos soluciones completas de transporte terrestre, verificación de proveedores y monitoreo satelital para garantizar la integridad de tu carga en todo momento.</p>
+    </div>
+
+    <!-- Fila principal: Flete terrestre (3 tipos) -->
+    <div class="terrestre-grid">
+
+      <div class="terrestre-card">
+        <div class="terrestre-card-top">
+          <div class="terrestre-icon-wrap" style="background:linear-gradient(135deg,#0a1628,#1a3a6b)">🚛</div>
+          <span class="terrestre-badge">Más popular</span>
+        </div>
+        <h3>Flete Terrestre Full</h3>
+        <p>Carga completa de contenedor o camión dedicado. Ideal para grandes volúmenes que requieren exclusividad, máxima seguridad y tiempos de entrega precisos.</p>
+        <div class="terrestre-tags">
+          <span class="tag tag-dark">Carga completa</span>
+          <span class="tag tag-gold">FTL</span>
+          <span class="tag tag-blue">Dedicado</span>
+        </div>
+      </div>
+
+      <div class="terrestre-card">
+        <div class="terrestre-card-top">
+          <div class="terrestre-icon-wrap" style="background:linear-gradient(135deg,#1a3a6b,#2a5a9b)">🚐</div>
+          <span class="terrestre-badge">Económico</span>
+        </div>
+        <h3>Flete Terrestre Sencillo</h3>
+        <p>Servicio estándar para cargas medianas o parciales. Consolidación de carga con rutas programadas para optimizar costos sin sacrificar puntualidad.</p>
+        <div class="terrestre-tags">
+          <span class="tag tag-dark">Carga parcial</span>
+          <span class="tag tag-gold">LTL</span>
+          <span class="tag tag-blue">Consolidado</span>
+        </div>
+      </div>
+
+      <div class="terrestre-card">
+        <div class="terrestre-card-top">
+          <div class="terrestre-icon-wrap" style="background:linear-gradient(135deg,#8a6d28,#c8a84b)">🏙️</div>
+          <span class="terrestre-badge">Urbano</span>
+        </div>
+        <h3>Flete Local</h3>
+        <p>Distribución y entrega de última milla dentro de la zona metropolitana y puertos locales. Rapidez y flexibilidad para movimientos de corta distancia.</p>
+        <div class="terrestre-tags">
+          <span class="tag tag-dark">Última milla</span>
+          <span class="tag tag-gold">Express</span>
+          <span class="tag tag-blue">Puerto local</span>
         </div>
       </div>
 
     </div>
 
-    <div class="padrones-cta">
-      <p>¿Necesitas tramitar o renovar tu padrón sectorial? Nuestro equipo especializado te guía en todo el proceso ante el SAT.</p>
-      <a href="#contacto" class="btn-primary">Tramitar mi Padrón →</a>
+    <!-- Fila inferior: 4 mini servicios -->
+    <div class="terrestre-grid-bottom">
+
+      <div class="mini-card">
+        <span class="mini-icon">📄</span>
+        <h4>Previos de Origen</h4>
+        <p>Verificación documental y física de la mercancía en el punto de origen antes del embarque. Detectamos discrepancias antes de que generen problemas en aduana.</p>
+      </div>
+
+      <div class="mini-card">
+        <span class="mini-icon">🏭</span>
+        <h4>Auditorías de Proveedor</h4>
+        <p>Evaluación integral de proveedores en origen: procesos productivos, cumplimiento normativo, capacidad operativa y estándares de calidad internacional.</p>
+      </div>
+
+      <div class="mini-card">
+        <span class="mini-icon">🔬</span>
+        <h4>Inspecciones de Calidad</h4>
+        <p>Revisión técnica de producto terminado antes de exportación o en punto de entrada. Garantizamos que tu mercancía cumple especificaciones acordadas.</p>
+      </div>
+
+      <div class="mini-card">
+        <span class="mini-icon">🛰️</span>
+        <h4>Rastreo Satelital</h4>
+        <p>Monitoreo GPS en tiempo real de tu carga durante todo el trayecto terrestre. Acceso a plataforma digital con alertas automáticas y reporte de ruta.</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:50px;padding:40px;background:rgba(200,168,75,0.06);border:1px solid rgba(200,168,75,0.15);border-radius:16px">
+      <p style="color:#555;font-size:1rem;margin-bottom:20px;line-height:1.7">¿Necesitas cotizar un servicio de transporte o inspección? Te respondemos en menos de 2 horas.</p>
+      <a href="#contacto" class="btn-primary">Cotizar Ahora →</a>
     </div>
   </div>
 </section>
@@ -410,6 +480,9 @@ footer ul a:hover{color:var(--accent)}
         <option style="background:#0a0a0a">IMMEX</option>
         <option style="background:#0a0a0a">Padrón de Importación</option>
         <option style="background:#0a0a0a">Padrón de Exportación</option>
+        <option style="background:#0a0a0a">Flete Terrestre</option>
+        <option style="background:#0a0a0a">Inspección / Calidad</option>
+        <option style="background:#0a0a0a">Rastreo Satelital</option>
         <option style="background:#0a0a0a">Consultoría</option>
       </select>
       <textarea class="form-input" placeholder="Describe tu mercancía o necesidad..."></textarea>
@@ -425,18 +498,18 @@ footer ul a:hover{color:var(--accent)}
       <p>Más de 25 años facilitando el comercio exterior de empresas mexicanas e internacionales con profesionalismo y excelencia.</p>
     </div>
     <div><h5>Servicios</h5><ul>
-      <li><a href="#">Importación</a></li>
-      <li><a href="#">Exportación</a></li>
-      <li><a href="#">IMMEX</a></li>
-      <li><a href="#">Logística</a></li>
-      <li><a href="#">Consultoría</a></li>
+      <li><a href="#servicios">Importación</a></li>
+      <li><a href="#servicios">Exportación</a></li>
+      <li><a href="#servicios">IMMEX</a></li>
+      <li><a href="#servicios">Logística</a></li>
+      <li><a href="#servicios">Consultoría</a></li>
     </ul></div>
-    <div><h5>Padrones</h5><ul>
-      <li><a href="#padrones">General de Importadores</a></li>
+    <div><h5>Especialidades</h5><ul>
+      <li><a href="#padrones">Padrón General</a></li>
       <li><a href="#padrones">Sectorial Textil</a></li>
       <li><a href="#padrones">Sectorial Siderúrgico</a></li>
-      <li><a href="#padrones">Exportación Bebidas</a></li>
-      <li><a href="#padrones">Metales Preciosos</a></li>
+      <li><a href="#terrestre">Flete Terrestre</a></li>
+      <li><a href="#terrestre">Rastreo Satelital</a></li>
     </ul></div>
     <div><h5>Contacto</h5><ul>
       <li><a href="#">📍 Manzanillo, Colima</a></li>
@@ -480,7 +553,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.1});
 
-document.querySelectorAll('.service-card,.step,.stat-item,.padron-card').forEach(el => {
+document.querySelectorAll('.service-card,.step,.stat-item,.padron-card,.terrestre-card,.mini-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(40px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
