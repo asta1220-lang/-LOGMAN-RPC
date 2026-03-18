@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precios de Hoy · Aguacate</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=Azeret+Mono:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --negro: #0c0f08;
+  --verde-oscuro: #12280a;
+  --verde: #2d6a14;
+  --verde-vivo: #4e9a25;
+  --verde-neon: #9ed43a;
+  --verde-palido: #c8e8a8;
+  --crema: #f4f1e6;
+  --naranja: #d4561c;
+  --texto-suave: #7a8a62;
+  --borde: rgba(158,212,58,0.18);
+  --borde-suave: rgba(158,212,58,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--negro); color: var(--crema); min-height: 100vh; display: flex; flex-direction: column; }
+.hero { background: linear-gradient(160deg, #0a1f05 0%, #152e0a 50%, #0c1a07 100%); padding: 3rem 2rem 3.5rem; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--borde); }
+.hero::before { content: '🥑'; position: absolute; font-size: 200px; opacity: 0.04; top: -30px; right: -20px; transform: rotate(-15deg); pointer-events: none; }
+.hero-sub { font-size: 11px; font-family: 'Azeret Mono', monospace; text-transform: uppercase; letter-spacing: 3px; color: var(--verde-neon); opacity: 0.7; margin-bottom: 16px; }
+.hero-titulo { font-family: 'Fraunces', serif; font-size: clamp(36px, 8vw, 60px); font-weight: 700; color: var(--verde-palido); line-height: 1.1; margin-bottom: 10px; }
+.hero-fecha { font-size: 14px; color: rgba(200,232,168,0.5); margin-bottom: 1.5rem; font-style: italic; font-family: 'Fraunces', serif; }
+.estado-pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 100px; padding: 7px 20px; font-size: 13px; font-family: 'Azeret Mono', monospace; }
+.estado-pill.activo { background: rgba(158,212,58,0.12); border: 1px solid rgba(158,212,58,0.3); color: var(--verde-neon); }
+.estado-pill.inactivo { background: rgba(200,150,10,0.1); border: 1px solid rgba(200,150,10,0.3); color: #e8c060; }
+.dot { width: 7px; height: 7px; border-radius: 50%; animation: parpadeo 2s infinite; }
+.dot.verde { background: var(--verde-neon); }
+.dot.amarillo { background: #e8c060; animation: none; }
+@keyframes parpadeo { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+.contenedor { max-width: 580px; margin: 0 auto; padding: 2rem 1.5rem; flex: 1; }
+.cargando { text-align: center; padding: 4rem 2rem; color: var(--texto-suave); }
+.spinner { width: 40px; height: 40px; border: 3px solid var(--borde); border-top-color: var(--verde-neon); border-radius: 50%; animation: girar 0.9s linear infinite; margin: 0 auto 1rem; }
+@keyframes girar { to { transform: rotate(360deg); } }
+.sin-datos { text-align: center; padding: 4rem 2rem; }
+.sin-datos-icono { font-size: 70px; opacity: 0.2; margin-bottom: 1.5rem; display: block; }
+.sin-datos-titulo { font-family: 'Fraunces', serif; font-size: 26px; color: #e8c060; margin-bottom: 10px; }
+.sin-datos-desc { font-size: 14px; color: var(--texto-suave); line-height: 1.7; max-width: 320px; margin: 0 auto; }
+.sin-datos-fecha { display: inline-block; margin-top: 1.5rem; background: rgba(200,150,10,0.1); border: 1px solid rgba(200,150,10,0.2); border-radius: 100px; padding: 6px 18px; font-size: 12px; font-family: 'Azeret Mono', monospace; color: #c8a040; }
+.precios-lista { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem; }
+.card-precio { background: rgba(255,255,255,0.04); border: 1px solid var(--borde); border-radius: 16px; padding: 1.2rem 1.4rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; animation: subir 0.4s ease both; transition: border-color 0.2s, transform 0.2s; }
+.card-precio:hover { border-color: rgba(158,212,58,0.35); transform: translateX(4px); }
+@keyframes subir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.card-tipo { font-size: 16px; font-weight: 600; color: var(--crema); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.badge-oferta { display: inline-block; background: rgba(212,86,28,0.2); border: 1px solid rgba(212,86,28,0.4); color: var(--naranja); font-size: 10px; font-family: 'Azeret Mono', monospace; padding: 2px 9px; border-radius: 100px; letter-spacing: 0.5px; }
+.card-meta { font-size: 12px; font-family: 'Azeret Mono', monospace; color: var(--texto-suave); margin-top: 2px; line-height: 1.6; }
+.card-nota { font-size: 12px; color: var(--texto-suave); margin-top: 5px; font-style: italic; }
+.card-precio-num { font-family: 'Fraunces', serif; font-size: 30px; color: var(--verde-neon); text-align: right; white-space: nowrap; line-height: 1; }
+.card-unidad { font-size: 11px; color: var(--texto-suave); text-align: right; margin-top: 3px; font-family: 'Azeret Mono', monospace; }
+.mensaje-box { background: rgba(45,106,20,0.15); border: 1px solid rgba(45,106,20,0.3); border-left: 3px solid var(--verde-vivo); border-radius: 14px; padding: 1.2rem 1.4rem; font-size: 14px; color: var(--verde-palido); line-height: 1.7; margin-bottom: 1.5rem; animation: subir 0.4s ease 0.3s both; }
+.mensaje-label { font-size: 10px; font-family: 'Azeret Mono', monospace; text-transform: uppercase; letter-spacing: 1.5px; color: var(--verde-vivo); margin-bottom: 8px; }
+footer { text-align: center; padding: 1.5rem; border-top: 1px solid var(--borde); font-size: 12px; font-family: 'Azeret Mono', monospace; color: var(--texto-suave); }
+.seccion-label { font-size: 11px; font-family: 'Azeret Mono', monospace; text-transform: uppercase; letter-spacing: 2px; color: var(--verde-neon); opacity: 0.6; margin-bottom: 12px; }
+@media (max-width: 480px) { .hero { padding: 2.5rem 1.2rem 3rem; } .card-precio-num { font-size: 24px; } .contenedor { padding: 1.5rem 1rem; } }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-sub">Precios del día</div>
+  <div class="hero-titulo">🥑 Aguacate</div>
+  <div class="hero-fecha" id="hero-fecha">—</div>
+  <div class="estado-pill" id="estado-pill">
+    <div class="dot verde"></div>
+    <span id="estado-texto">Verificando...</span>
+  </div>
+</div>
+<div class="contenedor">
+  <div class="cargando" id="cargando">
+    <div class="spinner"></div>
+    <div style="font-size:14px;">Cargando precios...</div>
+  </div>
+  <div id="sin-datos" style="display:none;">
+    <div class="sin-datos">
+      <span class="sin-datos-icono">📭</span>
+      <div class="sin-datos-titulo">Sin actualizar hoy</div>
+      <div class="sin-datos-desc">El vendedor aún no ha publicado los precios de hoy.<br>Vuelve más tarde o consúltanos directamente.</div>
+      <div class="sin-datos-fecha" id="sin-datos-fecha">Hoy: —</div>
+    </div>
+  </div>
+  <div id="contenido-precios" style="display:none;">
+    <div class="seccion-label">Precios publicados hoy</div>
+    <div class="precios-lista" id="lista-precios"></div>
+    <div id="mensaje-container" style="display:none;">
+      <div class="mensaje-box">
+        <div class="mensaje-label">📞 Contacto & Entrega</div>
+        <div id="mensaje-texto"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer id="pie">Actualizando...</footer>
+<script>
+function fechaHoy() { return new Date().toISOString().split('T')[0]; }
+function fechaLegible() { return new Date().toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' }); }
+
+function parsearTxt(texto) {
+  const lineas = texto.split('\n').map(l => l.trim()).filter(l => l);
+  const resultado = { fecha: null, precios: [], mensaje: '' };
+  let precioActual = null;
+  for (const linea of lineas) {
+    if (linea.startsWith('FECHA:')) { resultado.fecha = linea.replace('FECHA:', '').trim(); }
+    else if (linea.startsWith('MENSAJE:')) { resultado.mensaje = linea.replace('MENSAJE:', '').trim(); }
+    else if (/^PRECIO_\d+:$/.test(linea)) { if (precioActual) resultado.precios.push(precioActual); precioActual = {}; }
+    else if (precioActual) {
+      if (linea.startsWith('TIPO:'))        precioActual.tipo          = linea.replace('TIPO:', '').trim();
+      if (linea.startsWith('PRECIO:'))      precioActual.precio        = linea.replace('PRECIO:', '').trim();
+      if (linea.startsWith('UNIDAD:'))      precioActual.unidad        = linea.replace('UNIDAD:', '').trim();
+      if (linea.startsWith('CALIDAD:'))     precioActual.calidad       = linea.replace('CALIDAD:', '').trim();
+      if (linea.startsWith('DISPONIBLE:'))  precioActual.disponibilidad= linea.replace('DISPONIBLE:', '').trim();
+      if (linea.startsWith('NOTA:'))        precioActual.nota          = linea.replace('NOTA:', '').trim();
+      if (linea.startsWith('OFERTA:'))      precioActual.oferta        = linea.replace('OFERTA:', '').trim() === 'SI';
+    }
+  }
+  if (precioActual && precioActual.tipo) resultado.precios.push(precioActual);
+  return resultado;
+}
+
+function renderPrecios(datos) {
+  const lista = document.getElementById('lista-precios');
+  lista.innerHTML = datos.precios.map((p, i) => `
+    <div class="card-precio" style="animation-delay:${i*0.07}s;">
+      <div style="flex:1;min-width:0;">
+        <div class="card-tipo">${p.tipo||'Aguacate'}${p.oferta?'<span class="badge-oferta">OFERTA</span>':''}</div>
+        <div class="card-meta">${[p.calidad,p.disponibilidad].filter(Boolean).join(' · ')}</div>
+        ${p.nota?`<div class="card-nota">${p.nota}</div>`:''}
+      </div>
+      <div>
+        <div class="card-precio-num">$${parseFloat(p.precio||0).toFixed(2)}</div>
+        <div class="card-unidad">${p.unidad||''}</div>
+      </div>
+    </div>`).join('');
+  if (datos.mensaje) { document.getElementById('mensaje-texto').textContent = datos.mensaje; document.getElementById('mensaje-container').style.display = 'block'; }
+  document.getElementById('contenido-precios').style.display = 'block';
+}
+
+function setEstado(tipo, texto) {
+  const pill = document.getElementById('estado-pill');
+  const dot = pill.querySelector('.dot');
+  document.getElementById('estado-texto').textContent = texto;
+  if (tipo === 'activo') { pill.className = 'estado-pill activo'; dot.className = 'dot verde'; }
+  else { pill.className = 'estado-pill inactivo'; dot.className = 'dot amarillo'; }
+}
+
+async function cargarPrecios() {
+  const hoy = fechaHoy();
+  document.getElementById('hero-fecha').textContent = fechaLegible();
+  document.getElementById('sin-datos-fecha').textContent = 'Hoy: ' + new Date().toLocaleDateString('es-MX', { day:'2-digit', month:'long', year:'numeric' });
+  try {
+    const resp = await fetch('precios.txt?v=' + Date.now(), { cache: 'no-store' });
+    if (!resp.ok) throw new Error('No encontrado');
+    const texto = await resp.text();
+    const datos = parsearTxt(texto);
+    document.getElementById('cargando').style.display = 'none';
+    if (datos.fecha === hoy) {
+      setEstado('activo', 'Precios actualizados hoy');
+      document.getElementById('pie').textContent = 'Actualizado hoy · Precios en pesos mexicanos';
+      if (datos.precios.length > 0) { renderPrecios(datos); }
+      else { document.getElementById('sin-datos').style.display = 'block'; setEstado('inactivo', 'Sin precios publicados hoy'); }
+    } else {
+      setEstado('inactivo', 'Sin actualizar hoy');
+      document.getElementById('sin-datos').style.display = 'block';
+      document.getElementById('pie').textContent = 'Última actualización: ' + (datos.fecha || 'desconocida') + ' · Los precios de hoy no están disponibles';
+    }
+  } catch(err) {
+    document.getElementById('cargando').style.display = 'none';
+    document.getElementById('sin-datos').style.display = 'block';
+    setEstado('inactivo', 'Sin actualizar hoy');
+    document.getElementById('pie').textContent = 'Sin datos disponibles · ' + new Date().toLocaleTimeString('es-MX');
+  }
+}
+
+cargarPrecios();
+setInterval(cargarPrecios, 5 * 60 * 1000);
+</script>
+</body>
+</html>
