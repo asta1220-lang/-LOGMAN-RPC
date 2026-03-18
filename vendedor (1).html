@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Vendedor · AguacatePrecio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,700&family=Azeret+Mono:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0f08;
+  --panel: rgba(255,255,255,0.04);
+  --borde: rgba(158,212,58,0.18);
+  --verde: #4e9a25;
+  --neon: #9ed43a;
+  --palido: #c8e8a8;
+  --crema: #f4f1e6;
+  --suave: #7a8a62;
+  --naranja: #d4561c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--crema); min-height: 100vh; }
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem; border-bottom: 1px solid var(--borde);
+  position: sticky; top: 0; background: rgba(12,15,8,0.96);
+  backdrop-filter: blur(12px); z-index: 100;
+}
+.logo { font-family: 'Fraunces', serif; font-size: 20px; color: var(--neon); display: flex; align-items: center; gap: 10px; }
+.logo-ico { width: 32px; height: 32px; background: linear-gradient(135deg,#2d6a14,var(--verde)); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; }
+.chip { font-family: 'Azeret Mono', monospace; font-size: 12px; color: var(--suave); background: var(--panel); border: 1px solid var(--borde); border-radius: 100px; padding: 5px 14px; }
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 2rem 1.5rem; }
+.titulo { font-family: 'Fraunces', serif; font-size: 26px; color: var(--crema); margin-bottom: 4px; }
+.subtitulo { font-size: 14px; color: var(--suave); margin-bottom: 1.8rem; }
+
+.aviso { background: rgba(200,150,10,0.08); border: 1px solid rgba(200,150,10,0.25); border-radius: 12px; padding: 12px 16px; font-size: 13px; color: #d4b040; margin-bottom: 1rem; line-height: 1.5; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.link-cliente { display: inline-flex; align-items: center; gap: 6px; background: rgba(158,212,58,0.1); border: 1px solid var(--borde); border-radius: 8px; padding: 6px 14px; font-size: 12px; color: var(--neon); text-decoration: none; font-family: 'Azeret Mono', monospace; transition: background .2s; white-space: nowrap; }
+.link-cliente:hover { background: rgba(158,212,58,0.18); }
+
+.estado { background: rgba(78,154,37,0.1); border: 1px solid rgba(78,154,37,0.22); border-radius: 10px; padding: 9px 14px; font-size: 12px; color: var(--neon); margin-bottom: 1.5rem; font-family: 'Azeret Mono', monospace; display: flex; align-items: center; gap: 8px; }
+.dot { width: 7px; height: 7px; background: var(--neon); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media(max-width:680px){ .grid { grid-template-columns: 1fr; } .wrap { padding: 1.5rem 1rem; } header { padding: 1rem; } }
+
+.panel { background: var(--panel); border: 1px solid var(--borde); border-radius: 18px; padding: 1.5rem; }
+.panel-t { font-family: 'Fraunces', serif; font-size: 17px; color: var(--palido); margin-bottom: 1.2rem; padding-bottom: 11px; border-bottom: 1px solid var(--borde); display: flex; justify-content: space-between; align-items: center; }
+
+.fg { margin-bottom: 11px; }
+.fg label { display: block; font-family: 'Azeret Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--suave); margin-bottom: 5px; }
+.fg input, .fg select, .fg textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--borde); border-radius: 10px; padding: 10px 13px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--crema); transition: border-color .2s, background .2s; }
+.fg select option { background: #1a2a10; }
+.fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--neon); background: rgba(158,212,58,0.04); }
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(200,232,168,0.2); }
+.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.toggle-row { display: flex; align-items: center; gap: 11px; padding: 10px 13px; background: rgba(255,255,255,0.03); border: 1px solid var(--borde); border-radius: 10px; margin-bottom: 11px; cursor: pointer; transition: border-color .2s; user-select: none; }
+.toggle-row:hover { border-color: rgba(158,212,58,0.35); }
+.sw { width: 36px; height: 20px; background: rgba(255,255,255,0.1); border-radius: 100px; position: relative; flex-shrink: 0; transition: background .2s; }
+.sw::after { content: ''; position: absolute; width: 14px; height: 14px; background: white; border-radius: 50%; top: 3px; left: 3px; transition: transform .2s; }
+.toggle-row.on .sw { background: var(--naranja); }
+.toggle-row.on .sw::after { transform: translateX(16px); }
+.toggle-label { font-size: 13px; color: var(--suave); }
+
+.btn { width: 100%; background: var(--verde); color: #0c0f08; border: none; border-radius: 10px; padding: 12px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 4px; }
+.btn:hover { background: var(--neon); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(78,154,37,.3); }
+
+.lista { display: flex; flex-direction: column; gap: 8px; max-height: 500px; overflow-y: auto; padding-right: 3px; }
+.lista::-webkit-scrollbar { width: 3px; }
+.lista::-webkit-scrollbar-thumb { background: var(--borde); border-radius: 3px; }
+
+.item { background: rgba(255,255,255,0.04); border: 1px solid var(--borde); border-radius: 12px; padding: 11px 13px; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; animation: up .3s ease; }
+@keyframes up { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.item-tipo { font-size: 14px; font-weight: 600; color: var(--crema); }
+.item-meta { font-size: 11px; font-family: 'Azeret Mono', monospace; color: var(--suave); margin-top: 3px; line-height: 1.5; }
+.item-num { font-family: 'Fraunces', serif; font-size: 22px; color: var(--neon); text-align: right; white-space: nowrap; }
+.item-uni { font-size: 11px; color: var(--suave); text-align: right; }
+.badge { display: inline-block; background: rgba(212,86,28,0.2); border: 1px solid rgba(212,86,28,0.35); color: var(--naranja); font-size: 10px; font-family: 'Azeret Mono', monospace; padding: 1px 8px; border-radius: 100px; margin-left: 5px; }
+.btn-del { background: none; border: 1px solid rgba(212,86,28,0.3); color: var(--naranja); border-radius: 7px; padding: 3px 10px; font-size: 11px; cursor: pointer; margin-top: 6px; transition: background .2s; font-family: 'DM Sans', sans-serif; }
+.btn-del:hover { background: rgba(212,86,28,0.15); }
+
+.empty { text-align: center; padding: 2.5rem 1rem; color: var(--suave); font-size: 14px; }
+.empty span { display: block; font-size: 34px; opacity: .2; margin-bottom: 8px; }
+
+.panel-wide { margin-top: 1.5rem; }
+.acciones { margin-top: 1rem; display: flex; justify-content: flex-end; }
+.btn-limpiar { background: none; border: 1px solid rgba(212,86,28,0.3); color: var(--naranja); border-radius: 9px; padding: 8px 16px; font-size: 13px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background .2s; }
+.btn-limpiar:hover { background: rgba(212,86,28,0.12); }
+
+.toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--verde); color: #0c0f08; padding: 11px 20px; border-radius: 10px; font-size: 13px; font-weight: 700; box-shadow: 0 8px 28px rgba(0,0,0,.5); opacity: 0; transform: translateY(20px); transition: all .3s cubic-bezier(.34,1.56,.64,1); pointer-events: none; z-index: 999; }
+.toast.show { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><div class="logo-ico">🥑</div> Panel Vendedor</div>
+  <div class="chip" id="fecha-chip">—</div>
+</header>
+
+<div class="wrap">
+  <div class="titulo">Mis Precios</div>
+  <div class="subtitulo">Lo que agregues aquí aparece al instante en la página de clientes</div>
+
+  <div class="aviso">
+    🔒 Esta página es solo para ti (vendedor). Tus clientes solo deben abrir <strong>cliente.html</strong>
+    <a class="link-cliente" href="cliente.html" target="_blank">↗ Ver como cliente</a>
+  </div>
+
+  <div class="estado">
+    <div class="dot"></div>
+    <span id="estado-txt">Los datos se comparten automáticamente con cliente.html</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- FORM -->
+    <div class="panel">
+      <div class="panel-t">➕ Agregar precio</div>
+
+      <div class="fg">
+        <label>Tipo de aguacate</label>
+        <select id="f-tipo">
+          <option>Hass Premium</option>
+          <option>Hass Estándar</option>
+          <option>Hass Pequeño</option>
+          <option>Fuerte</option>
+          <option>Criollo</option>
+          <option>Orgánico</option>
+        </select>
+      </div>
+
+      <div class="dos">
+        <div class="fg">
+          <label>Precio ($MXN)</label>
+          <input type="number" id="f-precio" placeholder="0.00" step="0.50" min="0">
+        </div>
+        <div class="fg">
+          <label>Unidad</label>
+          <select id="f-unidad">
+            <option>por kg</option>
+            <option>por pieza</option>
+            <option>caja 10 kg</option>
+            <option>caja 20 kg</option>
+            <option>costal 30 kg</option>
+            <option>por docena</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Calidad / descripción</label>
+        <input type="text" id="f-calidad" placeholder="Ej. Maduro, firme, primera calidad">
+      </div>
+
+      <div class="fg">
+        <label>Disponibilidad</label>
+        <input type="text" id="f-disp" placeholder="Ej. Lunes a viernes, limitado">
+      </div>
+
+      <div class="fg">
+        <label>Nota para el cliente</label>
+        <input type="text" id="f-nota" placeholder="Ej. Pedido mínimo 5 kg">
+      </div>
+
+      <div class="toggle-row" id="tog-promo" onclick="togglePromo()">
+        <div class="sw"></div>
+        <span class="toggle-label">Marcar como oferta especial</span>
+      </div>
+
+      <button class="btn" onclick="agregar()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Guardar precio
+      </button>
+    </div>
+
+    <!-- LISTA -->
+    <div class="panel">
+      <div class="panel-t">
+        📦 Publicados hoy
+        <span style="font-family:'Azeret Mono',monospace;font-size:11px;color:var(--suave);font-weight:400;" id="contador">0</span>
+      </div>
+      <div class="lista" id="lista">
+        <div class="empty"><span>📭</span>Aún no hay precios.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MENSAJE -->
+  <div class="panel panel-wide">
+    <div class="panel-t">💬 Mensaje para clientes</div>
+    <div class="fg">
+      <label>Contacto / entrega / condiciones</label>
+      <textarea id="f-mensaje" rows="3" placeholder="Ej. Entregamos martes y jueves · WhatsApp: 33 1234 5678 · Pedido mínimo 5 kg"></textarea>
+    </div>
+    <button class="btn" style="max-width:220px;" onclick="guardarMensaje()">Guardar mensaje</button>
+  </div>
+
+  <div class="acciones">
+    <button class="btn-limpiar" onclick="limpiar()">🗑 Limpiar todos los precios del día</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const K_PRECIOS = 'agu_precios_v2';
+const K_MENSAJE = 'agu_mensaje_v2';
+const K_FECHA   = 'agu_fecha_v2';
+
+let precios = JSON.parse(localStorage.getItem(K_PRECIOS) || '[]');
+let mensaje = localStorage.getItem(K_MENSAJE) || '';
+let esPromo = false;
+
+// fecha encabezado
+document.getElementById('fecha-chip').textContent =
+  new Date().toLocaleDateString('es-MX',{day:'2-digit',month:'short',year:'numeric'});
+document.getElementById('f-mensaje').value = mensaje;
+
+function hoy() { return new Date().toISOString().split('T')[0]; }
+
+function guardar() {
+  localStorage.setItem(K_PRECIOS, JSON.stringify(precios));
+  localStorage.setItem(K_FECHA, hoy());
+  document.getElementById('estado-txt').textContent =
+    'Guardado · ' + new Date().toLocaleTimeString('es-MX');
+}
+
+function togglePromo() {
+  esPromo = !esPromo;
+  document.getElementById('tog-promo').classList.toggle('on', esPromo);
+}
+
+function agregar() {
+  const precio = parseFloat(document.getElementById('f-precio').value);
+  if (!precio || precio <= 0) { toast('⚠ Ingresa un precio válido', true); return; }
+
+  precios.push({
+    id:    Date.now(),
+    tipo:  document.getElementById('f-tipo').value,
+    precio,
+    unidad: document.getElementById('f-unidad').value,
+    calidad: document.getElementById('f-calidad').value.trim(),
+    disp:    document.getElementById('f-disp').value.trim(),
+    nota:    document.getElementById('f-nota').value.trim(),
+    promo:   esPromo
+  });
+
+  guardar();
+  render();
+  toast('✓ Precio guardado — ya visible para clientes');
+
+  document.getElementById('f-precio').value = '';
+  document.getElementById('f-calidad').value = '';
+  document.getElementById('f-disp').value = '';
+  document.getElementById('f-nota').value = '';
+  esPromo = false;
+  document.getElementById('tog-promo').classList.remove('on');
+}
+
+function eliminar(id) {
+  precios = precios.filter(p => p.id !== id);
+  guardar();
+  render();
+  toast('Precio eliminado');
+}
+
+function limpiar() {
+  if (!confirm('¿Borrar todos los precios de hoy?')) return;
+  precios = [];
+  guardar();
+  render();
+  toast('Precios limpiados');
+}
+
+function guardarMensaje() {
+  mensaje = document.getElementById('f-mensaje').value;
+  localStorage.setItem(K_MENSAJE, mensaje);
+  localStorage.setItem(K_FECHA, hoy());
+  toast('✓ Mensaje guardado');
+}
+
+function render() {
+  const lista = document.getElementById('lista');
+  document.getElementById('contador').textContent =
+    precios.length + ' precio' + (precios.length !== 1 ? 's' : '');
+
+  if (!precios.length) {
+    lista.innerHTML = '<div class="empty"><span>📭</span>Aún no hay precios.<br>Agrega tu primer precio.</div>';
+    return;
+  }
+
+  lista.innerHTML = precios.map(p => `
+    <div class="item">
+      <div style="flex:1;min-width:0;">
+        <div class="item-tipo">${p.tipo}${p.promo ? '<span class="badge">OFERTA</span>' : ''}</div>
+        <div class="item-meta">${[p.unidad, p.calidad, p.disp].filter(Boolean).join(' · ')}${p.nota ? '<br>' + p.nota : ''}</div>
+        <button class="btn-del" onclick="eliminar(${p.id})">✕ Eliminar</button>
+      </div>
+      <div>
+        <div class="item-num">$${p.precio.toFixed(2)}</div>
+        <div class="item-uni">${p.unidad}</div>
+      </div>
+    </div>`).join('');
+}
+
+function toast(msg, error) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = error ? '#c4602a' : 'var(--verde)';
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+render();
+</script>
+</body>
+</html>

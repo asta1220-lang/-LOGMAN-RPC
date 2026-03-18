@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precios de Hoy · Aguacate</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,700&family=Azeret+Mono:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0f08;
+  --borde: rgba(158,212,58,0.18);
+  --verde: #4e9a25;
+  --neon: #9ed43a;
+  --palido: #c8e8a8;
+  --crema: #f4f1e6;
+  --suave: #7a8a62;
+  --naranja: #d4561c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--crema); min-height: 100vh; display: flex; flex-direction: column; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(160deg,#0a1f05 0%,#152e0a 60%,#0c1a07 100%);
+  padding: 3rem 2rem 3.5rem; text-align: center;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--borde);
+}
+.hero::before { content: '🥑'; position: absolute; font-size: 180px; opacity: .05; top: -20px; right: -10px; transform: rotate(-15deg); pointer-events: none; }
+.hero-eye { font-family: 'Azeret Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--neon); opacity: .7; margin-bottom: 14px; }
+.hero-h1 { font-family: 'Fraunces', serif; font-size: clamp(34px,8vw,58px); font-weight: 700; color: var(--palido); line-height: 1.1; margin-bottom: 8px; }
+.hero-fecha { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: rgba(200,232,168,.45); margin-bottom: 1.5rem; }
+
+.pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 100px; padding: 7px 20px; font-size: 12px; font-family: 'Azeret Mono', monospace; }
+.pill.ok  { background: rgba(158,212,58,.1); border: 1px solid rgba(158,212,58,.28); color: var(--neon); }
+.pill.off { background: rgba(200,150,10,.1); border: 1px solid rgba(200,150,10,.28); color: #e8c060; }
+.dot { width: 7px; height: 7px; border-radius: 50%; }
+.dot.verde { background: var(--neon); animation: blink 2s infinite; }
+.dot.gris  { background: #e8c060; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* MAIN */
+main { max-width: 580px; margin: 0 auto; padding: 2rem 1.5rem; flex: 1; width: 100%; }
+
+/* SIN DATOS */
+.sin { text-align: center; padding: 4rem 1rem; }
+.sin-ico { font-size: 64px; opacity: .18; display: block; margin-bottom: 1.2rem; }
+.sin-h { font-family: 'Fraunces', serif; font-size: 24px; color: #e8c060; margin-bottom: 8px; }
+.sin-p { font-size: 14px; color: var(--suave); line-height: 1.7; max-width: 300px; margin: 0 auto; }
+.sin-badge { display: inline-block; margin-top: 1.2rem; background: rgba(200,150,10,.1); border: 1px solid rgba(200,150,10,.2); border-radius: 100px; padding: 5px 16px; font-size: 12px; font-family: 'Azeret Mono', monospace; color: #c8a040; }
+
+/* PRECIOS */
+.sec-label { font-family: 'Azeret Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--neon); opacity: .6; margin-bottom: 10px; }
+.cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.2rem; }
+
+.card { background: rgba(255,255,255,.04); border: 1px solid var(--borde); border-radius: 16px; padding: 1.15rem 1.35rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; animation: up .4s ease both; transition: border-color .2s, transform .2s; }
+.card:hover { border-color: rgba(158,212,58,.32); transform: translateX(4px); }
+@keyframes up { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+.card-tipo { font-size: 16px; font-weight: 600; color: var(--crema); margin-bottom: 4px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.badge { display: inline-block; background: rgba(212,86,28,.2); border: 1px solid rgba(212,86,28,.38); color: var(--naranja); font-size: 10px; font-family: 'Azeret Mono', monospace; padding: 2px 9px; border-radius: 100px; }
+.card-meta { font-size: 12px; font-family: 'Azeret Mono', monospace; color: var(--suave); line-height: 1.6; }
+.card-nota { font-size: 12px; color: var(--suave); margin-top: 4px; font-style: italic; }
+.card-precio { font-family: 'Fraunces', serif; font-size: 30px; color: var(--neon); text-align: right; white-space: nowrap; line-height: 1; }
+.card-uni { font-size: 11px; color: var(--suave); text-align: right; margin-top: 3px; font-family: 'Azeret Mono', monospace; }
+
+/* MENSAJE */
+.msg-box { background: rgba(45,106,20,.14); border: 1px solid rgba(45,106,20,.28); border-left: 3px solid var(--verde); border-radius: 14px; padding: 1.1rem 1.3rem; font-size: 14px; color: var(--palido); line-height: 1.7; margin-bottom: 1rem; animation: up .4s ease .25s both; }
+.msg-label { font-size: 10px; font-family: 'Azeret Mono', monospace; text-transform: uppercase; letter-spacing: 1.5px; color: var(--verde); margin-bottom: 7px; }
+
+footer { text-align: center; padding: 1.3rem; border-top: 1px solid var(--borde); font-size: 11px; font-family: 'Azeret Mono', monospace; color: var(--suave); }
+
+@media(max-width:480px) { .hero { padding: 2.5rem 1rem 3rem; } main { padding: 1.5rem 1rem; } .card-precio { font-size: 24px; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eye">Precios del día</div>
+  <div class="hero-h1">🥑 Aguacate</div>
+  <div class="hero-fecha" id="hero-fecha">—</div>
+  <div class="pill" id="pill">
+    <div class="dot verde"></div>
+    <span id="pill-txt">Cargando...</span>
+  </div>
+</div>
+
+<main id="main">
+  <!-- se rellena por JS -->
+</main>
+
+<footer id="pie">—</footer>
+
+<script>
+// ── MISMAS CLAVES que vendedor.html ──
+const K_PRECIOS = 'agu_precios_v2';
+const K_MENSAJE = 'agu_mensaje_v2';
+const K_FECHA   = 'agu_fecha_v2';
+
+function hoy() { return new Date().toISOString().split('T')[0]; }
+
+function fechaLeg() {
+  return new Date().toLocaleDateString('es-MX',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+}
+
+function render() {
+  document.getElementById('hero-fecha').textContent = fechaLeg();
+
+  const fecha    = localStorage.getItem(K_FECHA);
+  const precios  = JSON.parse(localStorage.getItem(K_PRECIOS) || '[]');
+  const mensaje  = localStorage.getItem(K_MENSAJE) || '';
+  const main     = document.getElementById('main');
+  const pill     = document.getElementById('pill');
+  const pillTxt  = document.getElementById('pill-txt');
+  const pie      = document.getElementById('pie');
+
+  const esHoy = fecha === hoy();
+
+  if (!esHoy || precios.length === 0) {
+    // Sin datos de hoy
+    pill.className = 'pill off';
+    pill.querySelector('.dot').className = 'dot gris';
+    pillTxt.textContent = 'Sin actualizar hoy';
+
+    const fechaArchivo = fecha
+      ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-MX',{day:'2-digit',month:'long',year:'numeric'})
+      : null;
+
+    main.innerHTML = `
+      <div class="sin">
+        <span class="sin-ico">📭</span>
+        <div class="sin-h">Sin precios hoy</div>
+        <div class="sin-p">El vendedor aún no ha publicado los precios de este día.<br>Vuelve más tarde.</div>
+        ${fechaArchivo && !esHoy ? `<div class="sin-badge">Última actualización: ${fechaArchivo}</div>` : ''}
+      </div>`;
+
+    pie.textContent = 'Precios no disponibles para hoy · ' + new Date().toLocaleTimeString('es-MX');
+    return;
+  }
+
+  // Hay precios de hoy ✓
+  pill.className = 'pill ok';
+  pill.querySelector('.dot').className = 'dot verde';
+  pillTxt.textContent = 'Precios actualizados hoy';
+
+  let html = `<div class="sec-label">Precios publicados hoy</div><div class="cards">`;
+  html += precios.map((p, i) => `
+    <div class="card" style="animation-delay:${i * .07}s;">
+      <div style="flex:1;min-width:0;">
+        <div class="card-tipo">
+          ${p.tipo}${p.promo ? '<span class="badge">OFERTA</span>' : ''}
+        </div>
+        <div class="card-meta">${[p.unidad, p.calidad, p.disp].filter(Boolean).join(' · ')}</div>
+        ${p.nota ? `<div class="card-nota">${p.nota}</div>` : ''}
+      </div>
+      <div>
+        <div class="card-precio">$${parseFloat(p.precio).toFixed(2)}</div>
+        <div class="card-uni">${p.unidad}</div>
+      </div>
+    </div>`).join('');
+  html += '</div>';
+
+  if (mensaje.trim()) {
+    html += `<div class="msg-box"><div class="msg-label">📞 Contacto & Entrega</div>${mensaje}</div>`;
+  }
+
+  main.innerHTML = html;
+  pie.textContent = 'Actualizado hoy · Precios en pesos mexicanos · ' + new Date().toLocaleTimeString('es-MX');
+}
+
+// Render inicial
+render();
+
+// Escucha cambios de localStorage (cuando vendedor.html guarda en otra pestaña)
+window.addEventListener('storage', e => {
+  if (e.key === K_PRECIOS || e.key === K_FECHA || e.key === K_MENSAJE) render();
+});
+
+// También refresca cada minuto por si está en la misma pestaña
+setInterval(render, 60 * 1000);
+</script>
+</body>
+</html>
