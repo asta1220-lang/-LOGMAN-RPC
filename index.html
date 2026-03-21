@@ -3,135 +3,265 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOBALEX Agencia Aduanal | Expertos en Comercio Exterior</title>
+<title>LOGMAN RPC | Logística Internacional y Despachos Aduanales</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap');
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#0a1628;--accent:#c8a84b;--accent2:#1a3a6b;--light:#f8f5ef;--text:#1a1a2e;--white:#ffffff}
+:root{
+  --primary:#0a0a0c;
+  --primary2:#111115;
+  --gold:#c8925a;
+  --gold2:#e8b878;
+  --gold3:#a06a38;
+  --cyan:#4dcfea;
+  --light:#f0ebe3;
+  --text:#1a1a1e;
+  --white:#ffffff;
+}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--primary);color:var(--white);overflow-x:hidden}
-nav{position:fixed;top:0;width:100%;z-index:1000;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,168,75,0.2);transition:all 0.3s}
-.logo{font-size:1.6rem;font-weight:900;letter-spacing:2px;color:var(--accent);text-shadow:0 0 30px rgba(200,168,75,0.5)}
-.logo span{color:var(--white);font-weight:300}
-nav ul{list-style:none;display:flex;gap:40px}
-nav ul a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.3s;position:relative}
-nav ul a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s}
-nav ul a:hover{color:var(--accent)}
+body{font-family:'Lato',sans-serif;background:var(--primary);color:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,12,0.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,146,90,0.25);transition:all 0.3s}
+.logo-nav{display:flex;align-items:center;gap:12px}
+.logo-nav img{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);object-fit:cover}
+.logo-nav-text{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;color:var(--gold);text-shadow:0 0 20px rgba(200,146,90,0.5)}
+.logo-nav-text span{color:rgba(255,255,255,0.6);font-size:0.85rem;display:block;font-family:'Lato',sans-serif;font-weight:300;letter-spacing:2px;line-height:1}
+nav ul{list-style:none;display:flex;gap:36px}
+nav ul a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s;position:relative}
+nav ul a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width 0.3s}
+nav ul a:hover{color:var(--gold)}
 nav ul a:hover::after{width:100%}
-.nav-btn{background:var(--accent);color:var(--primary);padding:10px 28px;border:none;border-radius:4px;font-weight:700;font-size:0.8rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
-.nav-btn:hover{background:#e0bc5a;transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,168,75,0.4)}
-#hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,#1a3a6b 0%,#0a1628 60%)}
-.globe-container{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:500px;height:500px;perspective:1000px;animation:floatY 6s ease-in-out infinite}
-@keyframes floatY{0%,100%{transform:translateY(-50%) translateY(0)}50%{transform:translateY(-50%) translateY(-30px)}}
-.globe{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(26,58,107,0.9) 0%,rgba(10,22,40,0.7) 60%),conic-gradient(from 0deg,#0a1628,#1a3a6b,#0a1628,#1a3a6b,#0a1628);border:2px solid rgba(200,168,75,0.4);box-shadow:0 0 80px rgba(200,168,75,0.15),0 0 160px rgba(26,58,107,0.5),inset 0 0 80px rgba(200,168,75,0.05);animation:rotateGlobe 20s linear infinite;position:relative;transform-style:preserve-3d}
-@keyframes rotateGlobe{from{transform:rotateY(0deg) rotateX(10deg)}to{transform:rotateY(360deg) rotateX(10deg)}}
-.globe::before{content:'';position:absolute;inset:0;border-radius:50%;background:repeating-linear-gradient(0deg,transparent,transparent 48px,rgba(200,168,75,0.15) 49px),repeating-linear-gradient(90deg,transparent,transparent 48px,rgba(200,168,75,0.15) 49px)}
-.globe::after{content:'';position:absolute;top:10%;left:10%;right:10%;bottom:10%;border-radius:50%;border:1px solid rgba(200,168,75,0.2);box-shadow:0 0 0 20px rgba(200,168,75,0.03),0 0 0 40px rgba(200,168,75,0.02)}
-.orbit{position:absolute;border-radius:50%;border:1px solid rgba(200,168,75,0.3);top:50%;left:50%;transform:translate(-50%,-50%)}
-.orbit-1{width:560px;height:560px;animation:spin1 15s linear infinite}
-.orbit-2{width:620px;height:620px;animation:spin1 25s linear infinite reverse}
-.orbit-3{width:680px;height:680px;animation:spin1 35s linear infinite}
-@keyframes spin1{from{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(0deg)}to{transform:translate(-50%,-50%) rotateX(70deg) rotateZ(360deg)}}
-.orbit::before{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.nav-btn{background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--primary);padding:10px 26px;border:none;border-radius:3px;font-weight:700;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-family:'Lato',sans-serif}
+.nav-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(200,146,90,0.5)}
+
+/* HERO */
+#hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 20% 60%,#1a120a 0%,#0a0a0c 55%),radial-gradient(ellipse at 80% 20%,#0a0e1a 0%,transparent 60%)}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,146,90,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,146,90,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+
+/* GLOBE WITH LOGO */
+.globe-container{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:480px;height:480px;animation:floatY 7s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(-50%) translateY(0)}50%{transform:translateY(-50%) translateY(-28px)}}
+
+.globe-ring{position:absolute;inset:0;border-radius:50%;border:3px solid transparent;background:linear-gradient(var(--primary),var(--primary)) padding-box,linear-gradient(135deg,var(--gold),var(--gold3),var(--gold2),var(--gold3)) border-box;box-shadow:0 0 60px rgba(200,146,90,0.3),0 0 120px rgba(200,146,90,0.12),inset 0 0 60px rgba(10,10,12,0.8)}
+
+.globe-inner{position:absolute;inset:8px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 40% 35%,#1a120a 0%,#0a0a0c 70%);display:flex;align-items:center;justify-content:center}
+
+/* Grid lines inside globe */
+.globe-inner::before{content:'';position:absolute;inset:0;border-radius:50%;background:repeating-linear-gradient(0deg,transparent,transparent 44px,rgba(200,146,90,0.1) 45px),repeating-linear-gradient(90deg,transparent,transparent 44px,rgba(200,146,90,0.1) 45px);animation:rotateGrid 30s linear infinite}
+@keyframes rotateGrid{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* Meridians effect */
+.globe-inner::after{content:'';position:absolute;inset:0;border-radius:50%;background:
+  radial-gradient(ellipse 2px 100% at 25% 50%,rgba(200,146,90,0.15) 0%,transparent 100%),
+  radial-gradient(ellipse 2px 100% at 50% 50%,rgba(200,146,90,0.2) 0%,transparent 100%),
+  radial-gradient(ellipse 2px 100% at 75% 50%,rgba(200,146,90,0.15) 0%,transparent 100%)}
+
+.globe-logo{position:relative;z-index:10;width:62%;height:62%;object-fit:contain;filter:drop-shadow(0 0 20px rgba(200,146,90,0.6)) drop-shadow(0 0 8px rgba(77,207,234,0.3));animation:logoPulse 4s ease-in-out infinite}
+@keyframes logoPulse{0%,100%{filter:drop-shadow(0 0 20px rgba(200,146,90,0.6)) drop-shadow(0 0 8px rgba(77,207,234,0.3))}50%{filter:drop-shadow(0 0 35px rgba(200,146,90,0.9)) drop-shadow(0 0 16px rgba(77,207,234,0.5))}}
+
+/* Orbits */
+.orbit{position:absolute;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.orbit-1{width:530px;height:530px;border:1px solid rgba(200,146,90,0.25);animation:spin1 18s linear infinite}
+.orbit-2{width:590px;height:590px;border:1px solid rgba(200,146,90,0.12);animation:spin1 30s linear infinite reverse}
+.orbit-3{width:650px;height:650px;border:1px dashed rgba(200,146,90,0.08);animation:spin1 45s linear infinite}
+@keyframes spin1{from{transform:translate(-50%,-50%) rotateX(65deg) rotateZ(0)}to{transform:translate(-50%,-50%) rotateX(65deg) rotateZ(360deg)}}
+.orbit::before{content:'';position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)}
+.orbit-2::before{background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
+
+/* Particles */
 .particles{position:absolute;inset:0;pointer-events:none}
-.particle{position:absolute;border-radius:50%;background:var(--accent);animation:particleFloat linear infinite;opacity:0}
-@keyframes particleFloat{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.6}90%{opacity:0.3}100%{transform:translateY(-100px) rotate(720deg);opacity:0}}
-.hero-content{position:relative;z-index:10;max-width:700px;padding-left:120px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);padding:6px 16px;border-radius:20px;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:24px;animation:fadeInUp 0.8s ease forwards}
-.hero-badge span{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,5rem);line-height:1.05;margin-bottom:20px;animation:fadeInUp 0.8s 0.2s ease both}
-h1 .gold{color:var(--accent)}
-.hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.65);line-height:1.8;max-width:520px;margin-bottom:40px;animation:fadeInUp 0.8s 0.4s ease both}
-.hero-btns{display:flex;gap:16px;animation:fadeInUp 0.8s 0.6s ease both}
-.btn-primary{background:var(--accent);color:var(--primary);padding:16px 36px;border:none;border-radius:4px;font-weight:700;font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
-.btn-primary:hover{background:#e0bc5a;transform:translateY(-3px);box-shadow:0 12px 35px rgba(200,168,75,0.5)}
-.btn-outline{background:transparent;color:var(--white);padding:16px 36px;border:1px solid rgba(255,255,255,0.3);border-radius:4px;font-weight:600;font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
-.hero-stats{display:flex;gap:48px;margin-top:64px;animation:fadeInUp 0.8s 0.8s ease both}
-.stat-num{font-size:2.5rem;font-weight:900;color:var(--accent);line-height:1}
-.stat-lbl{font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.scroll-line{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);animation:fadeInUp 1s 1.2s ease both}
-.scroll-line::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,rgba(200,168,75,0.8),transparent);animation:lineDown 2s ease infinite}
+.particle{position:absolute;border-radius:50%;animation:particleFloat linear infinite;opacity:0}
+@keyframes particleFloat{0%{transform:translateY(100vh);opacity:0}10%{opacity:0.5}90%{opacity:0.2}100%{transform:translateY(-80px);opacity:0}}
+
+/* HERO CONTENT */
+.hero-content{position:relative;z-index:10;max-width:680px;padding-left:100px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,146,90,0.08);border:1px solid rgba(200,146,90,0.35);padding:6px 16px;border-radius:2px;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;animation:fadeInUp 0.8s ease forwards}
+.hero-badge span{width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 8px var(--cyan);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,6vw,6rem);line-height:0.95;letter-spacing:3px;margin-bottom:20px;animation:fadeInUp 0.8s 0.2s ease both}
+h1 .gold{color:var(--gold);text-shadow:0 0 40px rgba(200,146,90,0.4)}
+h1 .cyan{color:var(--cyan)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.8;max-width:500px;margin-bottom:40px;animation:fadeInUp 0.8s 0.4s ease both;font-weight:300;letter-spacing:0.5px}
+.hero-btns{display:flex;gap:14px;animation:fadeInUp 0.8s 0.6s ease both}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--primary);padding:15px 34px;border:none;border-radius:3px;font-weight:700;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;font-family:'Lato',sans-serif}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(200,146,90,0.5)}
+.btn-outline{background:transparent;color:var(--white);padding:15px 34px;border:1px solid rgba(200,146,90,0.4);border-radius:3px;font-weight:600;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;font-family:'Lato',sans-serif}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.hero-stats{display:flex;gap:44px;margin-top:60px;padding-top:40px;border-top:1px solid rgba(200,146,90,0.15);animation:fadeInUp 0.8s 0.8s ease both}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--gold);line-height:1;letter-spacing:2px}
+.stat-lbl{font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.scroll-line{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);animation:fadeInUp 1s 1.2s ease both}
+.scroll-line::after{content:'';width:1px;height:50px;background:linear-gradient(to bottom,rgba(200,146,90,0.8),transparent);animation:lineDown 2s ease infinite}
 @keyframes lineDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-#servicios{padding:120px 60px;background:var(--light);color:var(--text);position:relative;overflow:hidden}
-#servicios::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--accent),transparent)}
-.section-label{font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:600}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.1;margin-bottom:60px;color:var(--text)}
-.section-title em{color:var(--accent2);font-style:normal}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.service-card{background:white;border-radius:12px;padding:40px 36px;position:relative;overflow:hidden;transition:box-shadow 0.4s ease;border:1px solid rgba(0,0,0,0.06);cursor:default;transform-style:preserve-3d}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
-.service-card:hover{box-shadow:20px 30px 60px rgba(0,0,0,0.15),0 0 0 1px rgba(200,168,75,0.2)}
-.service-card:hover::before{transform:scaleX(1)}
-.service-icon{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),#0a1628);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:24px;transition:transform 0.4s}
-.service-card:hover .service-icon{transform:scale(1.1)}
-.service-card h3{font-size:1.15rem;font-weight:700;margin-bottom:12px;color:var(--text)}
-.service-card p{font-size:0.9rem;line-height:1.7;color:#666}
-#stats{padding:100px 60px;background:var(--primary);position:relative}
+
+/* SERVICIOS */
+#servicios{padding:110px 60px;background:var(--primary2);color:var(--white);position:relative;overflow:hidden}
+#servicios::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),var(--cyan),var(--gold),transparent)}
+.section-label{font-size:0.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:600}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,4.5vw,4rem);line-height:1;letter-spacing:2px;margin-bottom:56px;color:var(--white)}
+.section-title em{color:var(--gold);font-style:normal}
+.section-title .c{color:var(--cyan);font-style:normal}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(200,146,90,0.08)}
+.service-card{background:var(--primary);padding:40px 34px;position:relative;overflow:hidden;transition:background 0.4s ease;cursor:default}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.service-card:hover{background:#0f0f13}
+.service-card:hover::after{transform:scaleX(1)}
+.service-icon{width:52px;height:52px;border:1px solid rgba(200,146,90,0.3);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:22px;transition:all 0.4s;color:var(--gold)}
+.service-card:hover .service-icon{border-color:var(--gold);background:rgba(200,146,90,0.08);box-shadow:0 0 20px rgba(200,146,90,0.2)}
+.service-card h3{font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:10px;color:var(--white);letter-spacing:1px;text-transform:uppercase}
+.service-card p{font-size:0.88rem;line-height:1.7;color:rgba(255,255,255,0.45);font-weight:300}
+
+/* STATS */
+#stats{padding:90px 60px;background:var(--primary);position:relative;border-top:1px solid rgba(200,146,90,0.1)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.stat-item{text-align:center;padding:60px 40px;border-right:1px solid rgba(255,255,255,0.08);position:relative;transition:background 0.3s}
+.stat-item{text-align:center;padding:50px 30px;border-right:1px solid rgba(200,146,90,0.1);position:relative;transition:background 0.3s}
 .stat-item:last-child{border-right:none}
-.stat-item:hover{background:rgba(200,168,75,0.05)}
-.big-num{font-size:4rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:8px}
-.stat-item p{font-size:0.85rem;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase}
-#proceso{padding:120px 60px;background:#0e1e35}
+.stat-item:hover{background:rgba(200,146,90,0.04)}
+.big-num{font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:var(--gold);line-height:1;margin-bottom:8px;letter-spacing:2px;text-shadow:0 0 40px rgba(200,146,90,0.3)}
+.stat-item p{font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;font-weight:600}
+
+/* PROCESO */
+#proceso{padding:110px 60px;background:var(--primary2)}
 .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
-.process-steps::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:2px;background:linear-gradient(to right,var(--accent),var(--accent2),var(--accent))}
-.step{text-align:center;padding:0 20px;position:relative;transition:transform 0.3s}
-.step:hover{transform:translateY(-8px)}
-.step-num{width:80px;height:80px;border-radius:50%;background:var(--primary);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:var(--accent);margin:0 auto 24px;position:relative;z-index:1;transition:all 0.3s;box-shadow:0 0 0 8px rgba(200,168,75,0.08)}
-.step:hover .step-num{background:var(--accent);color:var(--primary);box-shadow:0 0 40px rgba(200,168,75,0.4)}
-.step h4{font-size:1rem;font-weight:700;margin-bottom:10px;color:white}
-.step p{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.6}
-#nosotros{padding:120px 60px;background:var(--light);color:var(--text);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about-visual{position:relative;height:500px;perspective:800px}
-.card-3d{position:absolute;background:white;border-radius:16px;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.12);transition:transform 0.5s ease;transform-style:preserve-3d}
-.card-3d:hover{transform:rotateY(-10deg) rotateX(5deg) scale(1.03)}
-.card-main{width:320px;top:20px;left:20px;background:var(--primary);color:white;animation:float3d 5s ease-in-out infinite}
-@keyframes float3d{0%,100%{transform:translateY(0) rotateY(-5deg) rotateX(3deg)}50%{transform:translateY(-15px) rotateY(5deg) rotateX(-3deg)}}
-.card-main h3{font-size:1.2rem;color:var(--accent);margin-bottom:8px}
-.card-main p{font-size:0.85rem;opacity:0.7}
-.card-secondary{width:240px;bottom:40px;right:0;top:auto;background:var(--accent);color:var(--primary);animation:float3d 5s 1s ease-in-out infinite}
-.card-secondary .big-icon{font-size:2.5rem;margin-bottom:8px}
-.card-secondary h4{font-weight:800;font-size:1rem}
-.card-accent{width:180px;top:240px;left:0;background:var(--accent2);color:white;animation:float3d 5s 2s ease-in-out infinite}
-.card-accent p{font-size:0.75rem;opacity:0.8}
-.card-accent strong{font-size:1.8rem;display:block}
-.about-content .section-title{margin-bottom:24px}
-.about-content>p{font-size:1rem;line-height:1.8;color:#555;margin-bottom:32px}
-.check-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
-.check-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.95rem;color:var(--text)}
-.check-list li::before{content:'✓';color:var(--accent);background:rgba(200,168,75,0.15);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;flex-shrink:0;margin-top:2px}
-#contacto{padding:120px 60px;background:var(--primary);text-align:center}
-.contact-box{max-width:700px;margin:0 auto;background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,75,0.2);border-radius:20px;padding:70px;position:relative;overflow:hidden}
-.contact-box::before{content:'';position:absolute;inset:0;border-radius:20px;background:radial-gradient(circle at 50% 0%,rgba(200,168,75,0.08),transparent 60%);pointer-events:none}
-.contact-box h2{font-family:'Playfair Display',serif;font-size:2.5rem;margin-bottom:16px;color:white}
-.contact-box>p{color:rgba(255,255,255,0.6);margin-bottom:40px;line-height:1.7}
-.contact-form{display:flex;flex-direction:column;gap:16px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form-input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px 18px;color:white;font-family:'Inter',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.3s;width:100%}
-.form-input::placeholder{color:rgba(255,255,255,0.35)}
-.form-input:focus{border-color:var(--accent)}
-textarea.form-input{resize:vertical;min-height:120px}
-footer{background:#060e1a;padding:60px;border-top:1px solid rgba(200,168,75,0.15)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-brand .logo{font-size:1.4rem;display:block;margin-bottom:16px}
-.footer-brand p{font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.7;max-width:260px}
-footer h5{font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.process-steps::before{content:'';position:absolute;top:36px;left:12%;right:12%;height:1px;background:linear-gradient(to right,var(--gold),var(--cyan),var(--gold))}
+.step{text-align:center;padding:0 18px;position:relative;transition:transform 0.3s}
+.step:hover{transform:translateY(-10px)}
+.step-num{width:72px;height:72px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);margin:0 auto 24px;position:relative;z-index:1;transition:all 0.3s;background:var(--primary2);letter-spacing:2px}
+.step:hover .step-num{background:var(--gold);color:var(--primary);box-shadow:0 0 40px rgba(200,146,90,0.5)}
+.step h4{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;margin-bottom:10px;color:white;text-transform:uppercase;letter-spacing:1.5px}
+.step p{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.6;font-weight:300}
+
+/* NOSOTROS */
+#nosotros{padding:110px 60px;background:var(--primary);color:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-visual{position:relative;height:480px}
+.card-3d{position:absolute;border-radius:4px;padding:28px;transition:transform 0.5s ease}
+.card-main{width:300px;top:20px;left:20px;background:#0f0f13;border:1px solid rgba(200,146,90,0.25);animation:float3d 5s ease-in-out infinite}
+@keyframes float3d{0%,100%{transform:translateY(0) rotateY(-4deg) rotateX(2deg)}50%{transform:translateY(-14px) rotateY(4deg) rotateX(-2deg)}}
+.card-main h3{font-family:'Rajdhani',sans-serif;font-size:1rem;color:var(--gold);margin-bottom:6px;letter-spacing:2px;text-transform:uppercase}
+.card-main p{font-size:0.82rem;opacity:0.55;line-height:1.6;font-weight:300}
+.card-secondary{width:230px;bottom:50px;right:10px;top:auto;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--primary);animation:float3d 5s 1.2s ease-in-out infinite}
+.card-secondary .big-icon{font-size:2rem;margin-bottom:6px}
+.card-secondary h4{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:1px;text-transform:uppercase}
+.card-accent{width:175px;top:220px;left:10px;background:#0f0f13;border:1px solid rgba(77,207,234,0.3);color:white;animation:float3d 5s 2.2s ease-in-out infinite}
+.card-accent p{font-size:0.7rem;opacity:0.6;margin-top:2px;font-weight:300}
+.card-accent strong{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;display:block;color:var(--cyan);letter-spacing:2px}
+.about-content .section-title{margin-bottom:20px}
+.about-content>p{font-size:0.95rem;line-height:1.8;color:rgba(255,255,255,0.5);margin-bottom:28px;font-weight:300}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.check-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.9rem;color:rgba(255,255,255,0.75)}
+.check-list li::before{content:'✓';color:var(--primary);background:var(--gold);border-radius:2px;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:900;flex-shrink:0;margin-top:2px}
+
+/* CONTACTO */
+#contacto{padding:110px 60px;background:var(--primary2);text-align:center}
+.contact-box{max-width:680px;margin:0 auto;background:rgba(255,255,255,0.02);border:1px solid rgba(200,146,90,0.2);border-radius:4px;padding:64px;position:relative;overflow:hidden}
+.contact-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(200,146,90,0.06),transparent 60%);pointer-events:none}
+.contact-box h2{font-family:'Bebas Neue',sans-serif;font-size:3rem;margin-bottom:14px;color:white;letter-spacing:3px}
+.contact-box>p{color:rgba(255,255,255,0.5);margin-bottom:36px;line-height:1.7;font-size:0.95rem;font-weight:300}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-input{background:rgba(255,255,255,0.04);border:1px solid rgba(200,146,90,0.15);border-radius:3px;padding:13px 16px;color:white;font-family:'Lato',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s;width:100%}
+.form-input::placeholder{color:rgba(255,255,255,0.3)}
+.form-input:focus{border-color:var(--gold)}
+textarea.form-input{resize:vertical;min-height:110px}
+
+/* FOOTER */
+footer{background:#060609;padding:56px 60px;border-top:1px solid rgba(200,146,90,0.12)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.footer-brand{display:flex;flex-direction:column;gap:14px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo img{width:38px;height:38px;border-radius:50%;border:1px solid var(--gold)}
+.footer-logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--gold)}
+.footer-brand p{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.7;max-width:240px;font-weight:300}
+footer h5{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:700}
 footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-footer ul a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;transition:color 0.3s}
-footer ul a:hover{color:var(--accent)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;color:rgba(255,255,255,0.3)}
-@media(max-width:900px){nav{padding:16px 24px}nav ul,.nav-btn{display:none}.hero-content{padding-left:24px;padding-right:24px}.globe-container{display:none}#servicios,#stats,#proceso,#contacto,footer{padding:60px 24px}.services-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.process-steps{grid-template-columns:1fr 1fr}.process-steps::before{display:none}#nosotros{grid-template-columns:1fr;padding:60px 24px}.about-visual{display:none}.footer-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}.contact-box{padding:40px 24px}}
+footer ul a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.82rem;transition:color 0.3s;font-weight:300}
+footer ul a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);letter-spacing:0.5px}
+
+/* FLOATING SOCIAL BUTTONS */
+.social-float{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:999;display:flex;flex-direction:column;gap:14px}
+.social-btn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s;position:relative;animation:floatSocial 3s ease-in-out infinite}
+.social-btn:nth-child(2){animation-delay:0.5s}
+.social-btn:nth-child(3){animation-delay:1s}
+@keyframes floatSocial{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.08)}}
+.social-btn:hover{transform:scale(1.2)!important;box-shadow:0 8px 28px rgba(0,0,0,0.4)}
+.social-btn svg{width:22px;height:22px}
+.social-fb{background:linear-gradient(135deg,#1877f2,#0d5bc4);box-shadow:0 4px 18px rgba(24,119,242,0.5)}
+.social-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);box-shadow:0 4px 18px rgba(220,39,67,0.5)}
+.social-wa{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 4px 18px rgba(37,211,102,0.5)}
+.social-btn .tooltip{position:absolute;left:60px;background:rgba(10,10,12,0.95);color:white;padding:5px 12px;border-radius:4px;font-size:0.72rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;border:1px solid rgba(200,146,90,0.2);font-family:'Lato',sans-serif;letter-spacing:1px}
+.social-btn:hover .tooltip{opacity:1}
+
+/* PADRONES SECTION */
+#padrones{padding:110px 60px;background:var(--primary);position:relative;overflow:hidden}
+#padrones::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--cyan),var(--gold),transparent)}
+.padrones-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:56px}
+.padrones-col h3{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(200,146,90,0.2)}
+.padron-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.padron-list li{display:flex;align-items:center;gap:12px;font-size:0.88rem;color:rgba(255,255,255,0.65);font-weight:300;padding:10px 14px;border:1px solid rgba(200,146,90,0.08);transition:all 0.3s}
+.padron-list li:hover{border-color:rgba(200,146,90,0.3);background:rgba(200,146,90,0.04);color:white}
+.padron-num{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold);min-width:28px}
+.extra-services{display:flex;flex-direction:column;gap:10px}
+.extra-tag{display:flex;align-items:center;gap:10px;padding:11px 16px;border:1px solid rgba(77,207,234,0.15);font-size:0.86rem;color:rgba(255,255,255,0.65);transition:all 0.3s}
+.extra-tag:hover{border-color:rgba(77,207,234,0.4);background:rgba(77,207,234,0.04);color:white}
+.extra-tag .icon{font-size:1.1rem}
+
+/* FLETES SECTION */
+.fletes-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.flete-badge{background:rgba(200,146,90,0.08);border:1px solid rgba(200,146,90,0.2);padding:7px 16px;border-radius:2px;font-size:0.78rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:600;transition:all 0.3s}
+.flete-badge:hover{background:rgba(200,146,90,0.15);border-color:var(--gold)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  nav ul,.nav-btn{display:none}
+  .hero-content{padding-left:20px;padding-right:20px}
+  .globe-container{display:none}
+  #servicios,#stats,#proceso,#contacto,footer,#padrones{padding:60px 20px}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .process-steps::before{display:none}
+  #nosotros{grid-template-columns:1fr;padding:60px 20px}
+  .about-visual{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .contact-box{padding:36px 20px}
+  .padrones-grid{grid-template-columns:1fr}
+  .social-float{left:8px}
+  .social-btn{width:40px;height:40px}
+  .social-btn .tooltip{display:none}
+}
 </style>
 </head>
 <body>
+
+<!-- FLOATING SOCIAL BUTTONS -->
+<div class="social-float">
+  <a href="https://www.facebook.com/share/1DUezGhgyi/?mibextid=wwXIfr" target="_blank" class="social-btn social-fb" title="Facebook">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    <span class="tooltip">Facebook</span>
+  </a>
+  <a href="https://www.instagram.com/logman_rpc?igsh=eWEwdGxreWdscjEx&utm_source=qr" target="_blank" class="social-btn social-ig" title="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    <span class="tooltip">Instagram</span>
+  </a>
+  <a href="https://wa.me/523141658578" target="_blank" class="social-btn social-wa" title="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    <span class="tooltip">WhatsApp</span>
+  </a>
+</div>
+
 <nav>
-  <div class="logo">GLOBALEX<span> Aduanal</span></div>
+  <div class="logo-nav">
+    <img src="/mnt/user-data/uploads/LOGMAN_RPC.png" alt="LOGMAN RPC Logo">
+    <div class="logo-nav-text">LOGMAN <span>RPC®</span></div>
+  </div>
   <ul>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#padrones">Padrones</a></li>
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -140,11 +270,12 @@ footer ul a:hover{color:var(--accent)}
 </nav>
 
 <section id="hero">
+  <div class="hero-bg-grid"></div>
   <div class="particles" id="particles"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span></span> Agencia Aduanal Certificada</div>
-    <h1>Expertos en<br><span class="gold">Comercio</span><br>Exterior</h1>
-    <p class="hero-sub">Gestionamos tus importaciones y exportaciones con precisión, agilidad y total cumplimiento normativo en México y el mundo.</p>
+    <div class="hero-badge"><span></span> Agencia Aduanal Certificada · Manzanillo, Col.</div>
+    <h1><span class="gold">LOGMAN</span><br><span class="c">RPC</span>®</h1>
+    <p class="hero-sub">Logística Internacional y Despachos Aduanales. Gestionamos tus operaciones con precisión, rapidez y cumplimiento normativo total en México y el mundo.</p>
     <div class="hero-btns">
       <a href="#contacto" class="btn-primary">Solicitar Consulta</a>
       <a href="#servicios" class="btn-outline">Nuestros Servicios</a>
@@ -155,12 +286,18 @@ footer ul a:hover{color:var(--accent)}
       <div><div class="stat-num">+5K</div><div class="stat-lbl">Clientes activos</div></div>
     </div>
   </div>
+
   <div class="globe-container">
     <div class="orbit orbit-1"></div>
     <div class="orbit orbit-2"></div>
     <div class="orbit orbit-3"></div>
-    <div class="globe"></div>
+    <div class="globe-ring">
+      <div class="globe-inner">
+        <img class="globe-logo" src="/mnt/user-data/uploads/LOGMAN_RPC.png" alt="LOGMAN RPC">
+      </div>
+    </div>
   </div>
+
   <div class="scroll-line">Scroll</div>
 </section>
 
@@ -188,10 +325,48 @@ footer ul a:hover{color:var(--accent)}
   </div>
 </section>
 
+<!-- PADRONES DE EXPORTACIÓN -->
+<section id="padrones">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-label">Especialidades</div>
+    <h2 class="section-title">Padrones de Exportación<br><em>& Servicios Adicionales</em></h2>
+    <div class="padrones-grid">
+      <div class="padrones-col">
+        <h3>📋 Padrones de Exportación</h3>
+        <ul class="padron-list">
+          <li><span class="padron-num">01</span> Alcohol, alcohol desnaturalizado y mieles incristalizables</li>
+          <li><span class="padron-num">02</span> Cerveza</li>
+          <li><span class="padron-num">03</span> Tequila</li>
+          <li><span class="padron-num">04</span> Bebidas alcohólicas fermentadas (vinos)</li>
+          <li><span class="padron-num">05</span> Bebidas alcohólicas destiladas</li>
+          <li><span class="padron-num">06</span> Cigarros y tabacos labrados</li>
+          <li><span class="padron-num">07</span> Bebidas energetizantes</li>
+          <li><span class="padron-num">09</span> Oro, plata y cobre</li>
+        </ul>
+      </div>
+      <div class="padrones-col">
+        <h3>🔎 Servicios Especializados</h3>
+        <div class="extra-services">
+          <div class="extra-tag"><span class="icon">📄</span> Previos de origen</div>
+          <div class="extra-tag"><span class="icon">🏭</span> Auditorías de proveedor</div>
+          <div class="extra-tag"><span class="icon">✅</span> Inspecciones de calidad</div>
+        </div>
+        <h3 style="margin-top:28px">🚛 Fletes</h3>
+        <div class="fletes-row">
+          <span class="flete-badge">Full</span>
+          <span class="flete-badge">Sencillo</span>
+          <span class="flete-badge">Flete Local</span>
+          <span class="flete-badge">Rastreo Satelital</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="proceso">
   <div style="max-width:1200px;margin:0 auto;text-align:center">
     <div class="section-label">Cómo Trabajamos</div>
-    <h2 class="section-title" style="color:white">Proceso simple,<br><em style="color:var(--accent);font-style:normal">resultados extraordinarios</em></h2>
+    <h2 class="section-title">Proceso simple,<br><em>resultados extraordinarios</em></h2>
     <div class="process-steps">
       <div class="step"><div class="step-num">01</div><h4>Consulta Inicial</h4><p>Analizamos tu operación y necesidades específicas para diseñar la estrategia ideal.</p></div>
       <div class="step"><div class="step-num">02</div><h4>Clasificación</h4><p>Determinamos la fracción arancelaria correcta y regulaciones aplicables a tu mercancía.</p></div>
@@ -204,7 +379,7 @@ footer ul a:hover{color:var(--accent)}
 <section id="nosotros">
   <div class="about-visual">
     <div class="card-3d card-main"><h3>Certificación OEA</h3><p>Operador Económico Autorizado — máximo nivel de confianza ante las autoridades aduaneras mexicanas.</p></div>
-    <div class="card-3d card-secondary"><div class="big-icon">🏆</div><h4>#1 Agencia Aduanal del Noroeste</h4></div>
+    <div class="card-3d card-secondary"><div class="big-icon">🏆</div><h4>#1 Agencia Aduanal en Manzanillo</h4></div>
     <div class="card-3d card-accent"><strong>+25</strong><p>Años de trayectoria comprobada</p></div>
   </div>
   <div class="about-content">
@@ -228,6 +403,11 @@ footer ul a:hover{color:var(--accent)}
     <div class="section-label" style="display:block;margin-bottom:12px">Contáctanos</div>
     <h2>Inicia tu operación hoy</h2>
     <p>Nuestros expertos están listos para asesorarte sin costo. Cuéntanos sobre tu mercancía y te daremos una solución inmediata.</p>
+    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:32px">
+      <a href="tel:3141658578" style="display:flex;align-items:center;gap:8px;color:var(--gold);text-decoration:none;font-size:0.88rem;font-weight:600;letter-spacing:1px">📞 314 165 8578</a>
+      <a href="mailto:mprosales@logmanrpc.mx" style="display:flex;align-items:center;gap:8px;color:var(--gold);text-decoration:none;font-size:0.88rem;font-weight:600;letter-spacing:1px">✉️ mprosales@logmanrpc.mx</a>
+      <span style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.5);font-size:0.82rem">📍 Priv. Limón, Col. Valle de las Garzas, Manzanillo, Colima C.P. 28219</span>
+    </div>
     <div class="contact-form">
       <div class="form-row">
         <input class="form-input" type="text" placeholder="Tu nombre completo">
@@ -237,15 +417,15 @@ footer ul a:hover{color:var(--accent)}
         <input class="form-input" type="tel" placeholder="Teléfono">
         <input class="form-input" type="text" placeholder="Empresa">
       </div>
-      <select class="form-input" style="background:#0a1628">
+      <select class="form-input" style="background:#111115">
         <option value="" disabled selected>Tipo de operación</option>
-        <option style="background:#0a1628">Importación</option>
-        <option style="background:#0a1628">Exportación</option>
-        <option style="background:#0a1628">IMMEX</option>
-        <option style="background:#0a1628">Consultoría</option>
+        <option style="background:#111115">Importación</option>
+        <option style="background:#111115">Exportación</option>
+        <option style="background:#111115">IMMEX</option>
+        <option style="background:#111115">Consultoría</option>
       </select>
       <textarea class="form-input" placeholder="Describe tu mercancía o necesidad..."></textarea>
-      <button class="btn-primary" style="align-self:center;padding:18px 60px;font-size:0.9rem">Enviar Consulta →</button>
+      <button class="btn-primary" style="align-self:center;padding:16px 54px;font-size:0.85rem">Enviar Consulta →</button>
     </div>
   </div>
 </section>
@@ -253,47 +433,65 @@ footer ul a:hover{color:var(--accent)}
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <span class="logo">GLOBALEX<span style="color:white;font-weight:300"> Aduanal</span></span>
-      <p>Más de 25 años facilitando el comercio exterior de empresas mexicanas e internacionales con profesionalismo y excelencia.</p>
+      <div class="footer-logo">
+        <img src="/mnt/user-data/uploads/LOGMAN_RPC.png" alt="LOGMAN RPC">
+        <span class="footer-logo-text">LOGMAN RPC®</span>
+      </div>
+      <p>Más de 25 años facilitando el comercio exterior de empresas mexicanas e internacionales con profesionalismo y excelencia desde Manzanillo, Colima.</p>
     </div>
     <div><h5>Servicios</h5><ul><li><a href="#">Importación</a></li><li><a href="#">Exportación</a></li><li><a href="#">IMMEX</a></li><li><a href="#">Logística</a></li><li><a href="#">Consultoría</a></li></ul></div>
     <div><h5>Empresa</h5><ul><li><a href="#">Nosotros</a></li><li><a href="#">Certificaciones</a></li><li><a href="#">Blog</a></li><li><a href="#">Empleos</a></li></ul></div>
-    <div><h5>Contacto</h5><ul><li><a href="#">📍 Manzanillo, Colima</a></li><li><a href="#">📞 +52 314 000 0000</a></li><li><a href="#">✉️ info@globalex.mx</a></li><li><a href="#">🕐 24/7 Disponible</a></li></ul></div>
+    <div><h5>Contacto</h5><ul><li><a href="#">📍 Priv. Limón, Col. Valle de las Garzas</a></li><li><a href="#">📍 Manzanillo, Colima C.P. 28219</a></li><li><a href="tel:3141658578">📞 314 165 8578</a></li><li><a href="mailto:mprosales@logmanrpc.mx">✉️ mprosales@logmanrpc.mx</a></li><li><a href="#">🕐 24/7 Disponible</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 GLOBALEX Agencia Aduanal. Todos los derechos reservados.</span>
+    <span>© 2026 LOGMAN RPC® Logística Internacional y Despachos Aduanales. Todos los derechos reservados.</span>
     <span>Patente Aduanal · Certificación OEA · SAT Verificado</span>
   </div>
 </footer>
 
 <script>
+// Particles
 const container=document.getElementById('particles');
-for(let i=0;i<30;i++){const p=document.createElement('div');p.className='particle';const size=Math.random()*4+1;p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*15}s;`;container.appendChild(p);}
+for(let i=0;i<28;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  const size=Math.random()*3+1;
+  const colors=['#c8925a','#e8b878','#4dcfea'];
+  p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*14+10}s;animation-delay:${Math.random()*14}s;`;
+  container.appendChild(p);
+}
 
+// 3D tilt on service cards
 document.querySelectorAll('.service-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const rect=card.getBoundingClientRect();
     const x=(e.clientX-rect.left)/rect.width-0.5;
     const y=(e.clientY-rect.top)/rect.height-0.5;
-    card.style.transform=`translateY(-12px) rotateX(${-y*12}deg) rotateY(${x*12}deg)`;
+    card.style.transform=`translateY(-8px) rotateX(${-y*8}deg) rotateY(${x*8}deg)`;
   });
   card.addEventListener('mouseleave',()=>{card.style.transform='';});
 });
 
+// Scroll animations
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+    }
   });
 },{threshold:0.1});
 document.querySelectorAll('.service-card,.step,.stat-item').forEach(el=>{
-  el.style.opacity='0';el.style.transform='translateY(40px)';
+  el.style.opacity='0';
+  el.style.transform='translateY(35px)';
   el.style.transition='opacity 0.6s ease,transform 0.6s ease';
   observer.observe(el);
 });
 
+// Nav scroll effect
 window.addEventListener('scroll',()=>{
   const nav=document.querySelector('nav');
-  nav.style.background=window.scrollY>60?'rgba(10,22,40,0.97)':'rgba(10,22,40,0.85)';
+  nav.style.background=window.scrollY>60?'rgba(10,10,12,0.98)':'rgba(10,10,12,0.88)';
 });
 </script>
 </body>
