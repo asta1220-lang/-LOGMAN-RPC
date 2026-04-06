@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AguacatePrecio — Precios del Aguacate</title>
+<title>AguacatePrecio — Jalisco & Michoacán</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -171,6 +171,49 @@
     animation: pulse 1.5s infinite;
   }
 
+  /* STATE TABS */
+  .state-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .state-tab {
+    flex: 1;
+    min-width: 140px;
+    background: white;
+    border: 2px solid var(--borde);
+    border-radius: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    text-align: left;
+  }
+
+  .state-tab.active {
+    border-color: var(--verde-claro);
+    background: var(--verde-fondo);
+  }
+
+  .state-tab:hover { border-color: var(--verde-claro); }
+
+  .state-tab .state-name {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .state-tab .state-desc {
+    font-size: 12px;
+    color: var(--texto-suave);
+    margin-top: 3px;
+  }
+
   /* PRICE CARDS GRID */
   .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
 
@@ -212,10 +255,9 @@
   .spin { animation: spin 1s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Nacional price cards */
   .prices-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 12px;
     margin-bottom: 2rem;
   }
@@ -268,6 +310,21 @@
   .trend-down { background: var(--verde-fondo); color: var(--verde-medio); }
   .trend-flat { background: #f5f5f0; color: var(--texto-suave); }
 
+  /* State badge on card */
+  .state-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+  }
+
+  .badge-jalisco { background: #e8f0fe; color: #1a56c4; }
+  .badge-michoacan { background: #fef0e8; color: #c4602a; }
+
   /* AI loading state */
   .ai-loading {
     background: white;
@@ -289,7 +346,6 @@
 
   @keyframes shimmer { to { background-position: -200% 0; } }
 
-  /* Fuente info */
   .source-note {
     font-size: 12px;
     color: var(--texto-suave);
@@ -534,6 +590,19 @@
 
   .pub-empty svg { opacity: 0.2; margin-bottom: 1rem; }
 
+  /* Section divider for states */
+  .state-section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    color: var(--verde-oscuro);
+    margin: 1.5rem 0 0.75rem;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--borde);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   /* responsive */
   @media (max-width: 640px) {
     header { padding: 0 1rem; }
@@ -559,7 +628,7 @@
 <!-- ══════════ PÁGINA NACIONAL ══════════ -->
 <div class="page active" id="page-nacional">
   <div class="hero">
-    <div class="hero-eyebrow">México · Jalisco · CDMX</div>
+    <div class="hero-eyebrow">Jalisco · Michoacán</div>
     <h1>Precio del Aguacate</h1>
     <div class="hero-sub">Actualización automática cada día</div>
     <div class="update-badge">
@@ -577,12 +646,27 @@
       </button>
     </div>
 
-    <div class="prices-grid" id="national-grid">
+    <!-- Jalisco Section -->
+    <div class="state-section-title">
+      🔵 Jalisco
+    </div>
+    <div class="prices-grid" id="grid-jalisco">
       <div class="ai-loading">
-        <div style="font-size:14px;color:#5a6045;margin-bottom:16px;">Consultando precios nacionales con IA...</div>
+        <div style="font-size:14px;color:#5a6045;margin-bottom:16px;">Consultando precios de Jalisco...</div>
         <div class="skeleton-line" style="width:60%;"></div>
         <div class="skeleton-line" style="width:80%;"></div>
-        <div class="skeleton-line" style="width:50%;"></div>
+      </div>
+    </div>
+
+    <!-- Michoacán Section -->
+    <div class="state-section-title">
+      🟠 Michoacán
+    </div>
+    <div class="prices-grid" id="grid-michoacan">
+      <div class="ai-loading">
+        <div style="font-size:14px;color:#5a6045;margin-bottom:16px;">Consultando precios de Michoacán...</div>
+        <div class="skeleton-line" style="width:55%;"></div>
+        <div class="skeleton-line" style="width:75%;"></div>
       </div>
     </div>
 
@@ -715,7 +799,7 @@ function showPage(id, btn) {
 }
 
 // ──────────────────────────────────────────────
-//  PRECIOS NACIONALES CON API CLAUDE
+//  PRECIOS CON API CLAUDE — Solo Jalisco y Michoacán
 // ──────────────────────────────────────────────
 function hoy() {
   return new Date().toISOString().split('T')[0];
@@ -727,14 +811,16 @@ async function actualizarPrecios() {
   btn.disabled = true;
   icon.classList.add('spin');
 
-  document.getElementById('national-grid').innerHTML = `
-    <div class="ai-loading">
-      <div style="font-size:14px;color:#5a6045;margin-bottom:16px;">Consultando precios con IA... esto toma unos segundos</div>
-      <div class="skeleton-line" style="width:55%;"></div>
-      <div class="skeleton-line" style="width:75%;"></div>
-      <div class="skeleton-line" style="width:45%;"></div>
-      <div class="skeleton-line" style="width:65%;"></div>
-    </div>`;
+  // Mostrar skeletons
+  ['jalisco', 'michoacan'].forEach(estado => {
+    document.getElementById('grid-' + estado).innerHTML = `
+      <div class="ai-loading">
+        <div style="font-size:14px;color:#5a6045;margin-bottom:16px;">Consultando precios con IA...</div>
+        <div class="skeleton-line" style="width:55%;"></div>
+        <div class="skeleton-line" style="width:75%;"></div>
+        <div class="skeleton-line" style="width:45%;"></div>
+      </div>`;
+  });
 
   try {
     const fechaHoy = new Date().toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
@@ -747,20 +833,22 @@ async function actualizarPrecios() {
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
         tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-        system: `Eres un especialista en precios agrícolas de México. Cuando el usuario pida precios del aguacate, busca en internet y responde SOLO con un JSON válido, sin texto antes ni después, sin markdown, sin backticks. El JSON debe tener esta estructura exacta:
+        system: `Eres un especialista en precios agrícolas de México. Cuando el usuario pida precios del aguacate, busca en internet y responde SOLO con un JSON válido, sin texto antes ni después, sin markdown, sin backticks. El JSON debe tener EXACTAMENTE esta estructura con SOLO precios de Jalisco y Michoacán:
 {
-  "fecha": "sábado 14 de marzo de 2025",
-  "precios": [
-    { "region": "Jalisco (Guadalajara)", "precio_min": 35, "precio_max": 45, "unidad": "kg", "tipo": "Hass", "tendencia": "estable" },
-    { "region": "CDMX (Central de Abastos)", "precio_min": 30, "precio_max": 42, "unidad": "kg", "tipo": "Hass", "tendencia": "baja" },
-    { "region": "Michoacán (origen)", "precio_min": 22, "precio_max": 32, "unidad": "kg", "tipo": "Hass", "tendencia": "sube" },
-    { "region": "Mercado Jalisco", "precio_min": 38, "precio_max": 52, "unidad": "kg", "tipo": "Hass Premium", "tendencia": "estable" }
+  "fecha": "sábado 14 de junio de 2025",
+  "jalisco": [
+    { "mercado": "Central de Abastos Guadalajara", "precio_min": 35, "precio_max": 48, "unidad": "kg", "tipo": "Hass", "tendencia": "estable" },
+    { "mercado": "Mercado Tlajomulco", "precio_min": 40, "precio_max": 55, "unidad": "kg", "tipo": "Hass Premium", "tendencia": "sube" }
   ],
-  "fuente": "Texto breve sobre las fuentes consultadas",
-  "nota": "Contexto breve del mercado hoy"
+  "michoacan": [
+    { "mercado": "Uruapan (origen)", "precio_min": 18, "precio_max": 28, "unidad": "kg", "tipo": "Hass", "tendencia": "baja" },
+    { "mercado": "Apatzingán", "precio_min": 20, "precio_max": 30, "unidad": "kg", "tipo": "Hass", "tendencia": "estable" }
+  ],
+  "fuente": "Fuentes consultadas breve",
+  "nota": "Contexto del mercado hoy"
 }
-La tendencia puede ser: "sube", "baja" o "estable". Busca datos reales actuales.`,
-        messages: [{ role: 'user', content: `Necesito los precios del aguacate hass en México hoy ${fechaHoy}. Busca en internet y dame el JSON.` }]
+La tendencia puede ser: "sube", "baja" o "estable". Busca datos reales actuales solo de Jalisco y Michoacán.`,
+        messages: [{ role: 'user', content: `Necesito los precios del aguacate hass en Jalisco y Michoacán hoy ${fechaHoy}. Busca en internet y dame el JSON.` }]
       })
     });
 
@@ -770,10 +858,7 @@ La tendencia puede ser: "sube", "baja" o "estable". Busca datos reales actuales.
 
     let parsed;
     try { parsed = JSON.parse(clean); }
-    catch(e) {
-      // fallback con datos de ejemplo si la API falla
-      parsed = getFallbackData();
-    }
+    catch(e) { parsed = getFallbackData(); }
 
     preciosNacionales = parsed;
     localStorage.setItem('agu_nacional', JSON.stringify(parsed));
@@ -783,8 +868,7 @@ La tendencia puede ser: "sube", "baja" o "estable". Busca datos reales actuales.
 
   } catch(err) {
     console.error(err);
-    const fallback = getFallbackData();
-    renderNacional(fallback);
+    renderNacional(getFallbackData());
   }
 
   btn.disabled = false;
@@ -794,42 +878,50 @@ La tendencia puede ser: "sube", "baja" o "estable". Busca datos reales actuales.
 function getFallbackData() {
   return {
     fecha: new Date().toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' }),
-    precios: [
-      { region: "Jalisco (Guadalajara)", precio_min: 35, precio_max: 48, unidad: "kg", tipo: "Hass", tendencia: "estable" },
-      { region: "CDMX (Central de Abastos)", precio_min: 28, precio_max: 40, unidad: "kg", tipo: "Hass", tendencia: "baja" },
-      { region: "Michoacán (origen)", precio_min: 20, precio_max: 30, unidad: "kg", tipo: "Hass", tendencia: "sube" },
-      { region: "Mercado Tlajomulco", precio_min: 40, precio_max: 55, unidad: "kg", tipo: "Hass Premium", tendencia: "estable" }
+    jalisco: [
+      { mercado: "Central de Abastos Guadalajara", precio_min: 35, precio_max: 48, unidad: "kg", tipo: "Hass", tendencia: "estable" },
+      { mercado: "Mercado Tlajomulco", precio_min: 40, precio_max: 55, unidad: "kg", tipo: "Hass Premium", tendencia: "sube" }
+    ],
+    michoacan: [
+      { mercado: "Uruapan (origen)", precio_min: 18, precio_max: 28, unidad: "kg", tipo: "Hass", tendencia: "baja" },
+      { mercado: "Apatzingán", precio_min: 20, precio_max: 30, unidad: "kg", tipo: "Hass", tendencia: "estable" }
     ],
     fuente: "Datos de referencia del mercado",
     nota: "Precios orientativos. Actualiza para obtener datos en tiempo real."
   };
 }
 
-function renderNacional(data) {
-  const grid = document.getElementById('national-grid');
-  const fechaHoy = new Date().toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-  document.getElementById('hero-fecha').textContent = 'Actualizado · ' + fechaHoy;
-
-  const trendIcon = t => t === 'sube' ? '↑' : t === 'baja' ? '↓' : '→';
+function renderCards(precios, estadoClass) {
+  const trendIcon  = t => t === 'sube' ? '↑' : t === 'baja' ? '↓' : '→';
   const trendClass = t => t === 'sube' ? 'trend-up' : t === 'baja' ? 'trend-down' : 'trend-flat';
   const trendLabel = t => t === 'sube' ? 'Subiendo' : t === 'baja' ? 'Bajando' : 'Estable';
+  const badgeLabel = estadoClass === 'jalisco' ? 'Jalisco' : 'Michoacán';
+  const badgeClass = estadoClass === 'jalisco' ? 'badge-jalisco' : 'badge-michoacan';
 
-  grid.innerHTML = data.precios.map((p, i) => `
+  return precios.map((p, i) => `
     <div class="price-card" style="animation-delay:${i * 0.07}s;">
-      <div class="region">${p.region}</div>
+      <span class="state-badge ${badgeClass}">${badgeLabel}</span>
+      <div class="region">${p.mercado}</div>
       <div style="font-size:12px;color:var(--texto-suave);margin-bottom:6px;">${p.tipo}</div>
       <div class="amount">$${p.precio_min}–${p.precio_max}</div>
       <div class="unit">pesos / ${p.unidad}</div>
       <div class="trend ${trendClass(p.tendencia)}">${trendIcon(p.tendencia)} ${trendLabel(p.tendencia)}</div>
     </div>
   `).join('');
+}
+
+function renderNacional(data) {
+  const fechaHoy = new Date().toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  document.getElementById('hero-fecha').textContent = 'Actualizado · ' + fechaHoy;
+
+  document.getElementById('grid-jalisco').innerHTML = renderCards(data.jalisco || [], 'jalisco');
+  document.getElementById('grid-michoacan').innerHTML = renderCards(data.michoacan || [], 'michoacan');
 
   const note = document.getElementById('source-note');
   note.style.display = 'block';
   note.innerHTML = `<strong>Fuente:</strong> ${data.fuente || 'Búsqueda web automática'}<br><span>${data.nota || ''}</span>`;
 }
 
-// Auto-actualizar al inicio o si los datos son de ayer
 function initNacional() {
   const fechaHoy = new Date().toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
   document.getElementById('hero-fecha').textContent = fechaHoy;
@@ -942,13 +1034,13 @@ function renderPublica() {
 }
 
 // ──────────────────────────────────────────────
-//  AUTO-REFRESH DIARIO (cada 24h)
+//  AUTO-REFRESH DIARIO
 // ──────────────────────────────────────────────
 function checkDailyRefresh() {
   if (ultimaActualizacion !== hoy()) actualizarPrecios();
 }
 
-setInterval(checkDailyRefresh, 1000 * 60 * 60); // checa cada hora
+setInterval(checkDailyRefresh, 1000 * 60 * 60);
 
 // ──────────────────────────────────────────────
 //  INIT
